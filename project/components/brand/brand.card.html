@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Brand · Wordmark & Orbit" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>
+  body{margin:0;background:var(--plnly-greige);}
+  .wrap{padding:28px;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;}
+  .tile{background:var(--plnly-surface);border-radius:var(--plnly-radius-card);box-shadow:var(--plnly-shadow-raised);padding:26px;display:flex;align-items:center;justify-content:center;min-height:120px;}
+  .tile.ink{background:var(--plnly-ink);}
+  .cap{font-family:var(--plnly-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--plnly-ink-35);margin-top:8px;text-align:center;}
+  .col{display:flex;flex-direction:column;}
+</style></head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+  const { Wordmark, Orbit } = window.PLNLYDesignSystem_1cc2e7;
+  function Cap({children}){return <div className="cap">{children}</div>;}
+  function Demo(){
+    return (<>
+      <div className="col"><div className="tile"><Wordmark variant="stacked" size="sm" /></div><Cap>Stacked</Cap></div>
+      <div className="col"><div className="tile"><Wordmark variant="horizontal" /></div><Cap>Horizontal</Cap></div>
+      <div className="col"><div className="tile"><Wordmark variant="compact" size="sm" /></div><Cap>Compact P.</Cap></div>
+      <div className="col"><div className="tile ink"><Wordmark onInk reveal /></div><Cap>Reversed</Cap></div>
+      <div className="col"><div className="tile ink"><Wordmark subBrand onInk size="sm" /></div><Cap>PL·AI·NLY</Cap></div>
+      <div className="col"><div className="tile ink"><Orbit tone="ink" size={120} /></div><Cap>Orbit</Cap></div>
+    </>);
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

@@ -1,0 +1,52 @@
+/* ============================================================
+   PLNLY · Typography
+   Four voices, each used once per composition.
+   Outfit · Newsreader italic · Hanken Grotesk · IBM Plex Mono
+   ============================================================ */
+:root {
+  /* --- Families --- */
+  --plnly-font-display: 'Outfit', 'Helvetica Neue', Arial, sans-serif;        /* display, headlines, wordmark */
+  --plnly-font-serif:   'Newsreader', Georgia, 'Times New Roman', serif;      /* the one elevated word (italic) */
+  --plnly-font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif; /* body & interface workhorse */
+  --plnly-font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace; /* labels, data, stamp */
+
+  /* --- Weights --- */
+  --plnly-weight-light:    300;
+  --plnly-weight-regular:  400;
+  --plnly-weight-medium:   500;  /* display default; never bolder for display */
+  --plnly-weight-semibold: 600;  /* small labels only */
+
+  /* --- Type scale · sizes ---
+     Display 60 · H1 44 · H2 32 · H3 24 · Lead 19 · Body 16 · Small 14 · Caption 12 */
+  --plnly-display-size:   60px;
+  --plnly-h1-size:        44px;
+  --plnly-h2-size:        32px;
+  --plnly-h3-size:        24px;
+  --plnly-lead-size:      19px;
+  --plnly-body-size:      16px;
+  --plnly-small-size:     14px;
+  --plnly-caption-size:   12px;
+
+  /* --- Line heights --- */
+  --plnly-display-lh: 1.04;  /* @kind other */
+  --plnly-h1-lh:      1.10;  /* @kind other */
+  --plnly-h2-lh:      1.15;  /* @kind other */
+  --plnly-h3-lh:      1.25;  /* @kind other */
+  --plnly-lead-lh:    1.50;  /* @kind other */
+  --plnly-body-lh:    1.60;  /* @kind other */
+  --plnly-small-lh:   1.55;  /* @kind other */
+  --plnly-caption-lh: 1.50;  /* @kind other */
+
+  /* --- Letter-spacing / tracking --- */
+  --plnly-display-ls: -0.02em;   /* @kind other */
+  --plnly-h1-ls:      -0.015em;  /* @kind other */
+  --plnly-h2-ls:      -0.01em;   /* @kind other */
+  --plnly-h3-ls:      0;         /* @kind other */
+  --plnly-caption-ls: 0.16em;    /* @kind other */
+  --plnly-wordmark-ls: 0.045em;  /* @kind other */  /* PLNLY uppercase    */
+  --plnly-reveal-ls:   0.16em;   /* @kind other */  /* plainly italic     */
+  --plnly-label-ls:    0.16em;   /* @kind other */  /* mono caps eyebrows */
+
+  /* comfortable reading measure · 45–75 char target */
+  --plnly-measure:        66ch;  /* @kind other */
+}

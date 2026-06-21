@@ -1,0 +1,63 @@
+<!-- print-ready copy of ui_kits/website/index.html — same dir so relative asset paths resolve -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLNLY — plainly</title>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--plnly-greige); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  * { box-sizing: border-box; }
+
+  /* keep every background and color exactly as designed */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  @page { size: A4 portrait; margin: 0; }
+
+  @media print {
+    html { scroll-behavior: auto; }
+    /* sticky header would repeat / float — pin it static for print */
+    header { position: static !important; backdrop-filter: none !important; }
+    /* freeze the orbit + any entrance animations at their end state */
+    *, *::before, *::after {
+      animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      animation-play-state: running !important; transition-duration: 0s !important;
+    }
+    /* let sections flow; avoid splitting a section awkwardly where possible */
+    section, footer { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel" src="Site.jsx"></script>
+<script>
+addEventListener('load', () => {
+  (async () => {
+    // wait for Babel to transpile + React to mount
+    const root = document.getElementById('root');
+    await new Promise((resolve) => {
+      const t0 = Date.now();
+      (function poll() {
+        if (root && root.children.length > 0) return resolve();
+        if (Date.now() - t0 > 8000) return resolve();
+        setTimeout(poll, 100);
+      })();
+    });
+    try { await document.fonts.ready; } catch (e) {}
+    const imgs = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.allSettled(imgs.map((i) => i.decode())),
+      new Promise((r) => setTimeout(r, 8000)),
+    ]);
+    setTimeout(() => window.print(), 600);
+  })();
+});
+</script>
+</body></html>

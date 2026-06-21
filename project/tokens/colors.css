@@ -1,0 +1,67 @@
+/* ============================================================
+   PLNLY · Color system
+   Greige leads, ink anchors, coral does the loud work — rarely.
+   Balance ratio 70 · 20 · 8 · 2 (neutrals · ink · hues · coral).
+   ============================================================ */
+:root {
+  /* --- Neutrals · the 70% (ground & surfaces) --- */
+  --plnly-porcelain:    #EFEDE7;  /* cards, lift          */
+  --plnly-greige:       #E3E1DA;  /* THE GROUND           */
+  --plnly-greige-deep:  #D2CFC6;  /* edges, fills         */
+  --plnly-taupe:        #8A8A85;  /* 2nd text, rules      */
+  --plnly-ink:          #20242B;  /* type, dark UI        */
+
+  /* tints of ink for type on light (warm greys, never pure black) */
+  --plnly-ink-80:       #3A3833;
+  --plnly-ink-65:       #4F4C46;
+  --plnly-ink-55:       #5C594F;
+  --plnly-ink-45:       #6A665E;
+  --plnly-ink-35:       #8D887D;
+
+  /* porcelain tints for type on ink */
+  --plnly-on-ink:       #E4E3DE;  /* primary text on dark */
+  --plnly-on-ink-dim:   #AEB3B8;  /* secondary on dark    */
+  --plnly-on-ink-faint: #7E848A;  /* mono labels on dark  */
+
+  /* off-white for icon glyphs inside coral (favicon "P.") */
+  --plnly-cream:        #FBF8F3;
+  --plnly-white:        #FFFFFF;
+
+  /* --- The layered hues · secondary, ~8% --- */
+  --plnly-mist:         #9FB1BB;  /* calm, trust           */
+  --plnly-harbor:       #3E4F59;  /* deep blue, alt ink    */
+  --plnly-eucalyptus:   #5E7468;  /* grounded green        */
+  --plnly-mint:         #C2D8CC;  /* fresh, sub-brand tone */
+
+  /* --- The accent · coral, ~2% --- */
+  --plnly-coral:        #E25E3A;  /* the reveal, the dot, one moment */
+  --plnly-coral-deep:   #B8492A;  /* text-safe coral on light · hover */
+
+  /* --- Functional · UI status, muted to match --- */
+  --plnly-success:      #4F7A5E;
+  --plnly-info:         #5E7E92;
+  --plnly-caution:      #BE7A35;
+  --plnly-error:        #C0432A;
+
+  /* ============================================================
+     Semantic aliases — reach for these in product UI.
+     ============================================================ */
+  --plnly-bg:                var(--plnly-greige);      /* page ground          */
+  --plnly-bg-raised:         var(--plnly-porcelain);   /* a step up            */
+  --plnly-surface:           var(--plnly-white);       /* cards on greige      */
+  --plnly-surface-quiet:     var(--plnly-greige);      /* quiet inset card     */
+  --plnly-surface-ink:       var(--plnly-ink);         /* dark surface / bands */
+
+  --plnly-text:              var(--plnly-ink);         /* primary copy         */
+  --plnly-text-secondary:    var(--plnly-ink-65);      /* secondary copy       */
+  --plnly-text-muted:        var(--plnly-ink-45);      /* muted copy           */
+  --plnly-text-label:        var(--plnly-ink-35);      /* mono eyebrows/labels */
+  --plnly-text-on-ink:       var(--plnly-on-ink);
+
+  --plnly-accent:            var(--plnly-coral);       /* the dot, the reveal  */
+  --plnly-accent-text:       var(--plnly-coral-deep);  /* coral as text/hover  */
+
+  --plnly-border:            rgba(32, 36, 43, 0.13);   /* hairline rules       */
+  --plnly-border-strong:     rgba(32, 36, 43, 0.22);
+  --plnly-border-on-ink:     rgba(228, 227, 222, 0.14);
+}

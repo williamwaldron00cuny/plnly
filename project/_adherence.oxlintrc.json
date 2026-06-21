@@ -1,0 +1,352 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/brand/**",
+              "components/core/**",
+              "components/forms/**",
+              "components/icon/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Hanken Grotesk|IBM Plex Mono|Outfit|Newsreader))/i]",
+        "message": "Font not provided by the design system. Available: Hanken Grotesk, IBM Plex Mono, Outfit, Newsreader."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|tone|color|dot|mono|style|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, tone, color, dot, mono, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:hue|status)$/]",
+        "message": "<Badge> tone must be one of 'hue' | 'status'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|dot|onInk|disabled|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, size, dot, onInk, disabled, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|ghost)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'ghost'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|surface|elevation|radius|padding|style|key|ref|className|style|children)$/]",
+        "message": "<Card> doesn't accept that prop. Declared props: children, surface, elevation, radius, padding, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:white|quiet|porcelain|ink)$/]",
+        "message": "<Card> surface must be one of 'white' | 'quiet' | 'porcelain' | 'ink'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute[name.name='elevation'] > Literal[value!=/^(?:flat|raised|floating|overlay)$/]",
+        "message": "<Card> elevation must be one of 'flat' | 'raised' | 'floating' | 'overlay'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute[name.name='radius'] > Literal[value!=/^(?:card|card-lg|tile)$/]",
+        "message": "<Card> radius must be one of 'card' | 'card-lg' | 'tile'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|onInk|dot|style|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: children, onInk, dot, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|coral|style|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size, coral, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Input'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|hint|error|containerStyle|key|ref|className|style|children)$/]",
+        "message": "<Input> doesn't accept that prop. Declared props: label, hint, error, containerStyle."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Orbit'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|tone|spin|duration|satellites|style|key|ref|className|style|children)$/]",
+        "message": "<Orbit> doesn't accept that prop. Declared props: size, tone, spin, duration, satellites, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Orbit'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:ink|faint)$/]",
+        "message": "<Orbit> tone must be one of 'ink' | 'faint'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|onInk|subBrand|reveal|style|key|ref|className|style|children)$/]",
+        "message": "<Wordmark> doesn't accept that prop. Declared props: variant, size, onInk, subBrand, reveal, style."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Badge": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Card": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "Input": {
+        "replaces": []
+      },
+      "Orbit": {
+        "replaces": []
+      },
+      "Wordmark": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--plnly-accent",
+      "--plnly-accent-text",
+      "--plnly-bg",
+      "--plnly-bg-raised",
+      "--plnly-body-lh",
+      "--plnly-body-size",
+      "--plnly-border",
+      "--plnly-border-on-ink",
+      "--plnly-border-strong",
+      "--plnly-caption-lh",
+      "--plnly-caption-ls",
+      "--plnly-caption-size",
+      "--plnly-caution",
+      "--plnly-coral",
+      "--plnly-coral-deep",
+      "--plnly-cream",
+      "--plnly-display-lh",
+      "--plnly-display-ls",
+      "--plnly-display-size",
+      "--plnly-dur-micro",
+      "--plnly-dur-reveal",
+      "--plnly-dur-standard",
+      "--plnly-ease",
+      "--plnly-error",
+      "--plnly-eucalyptus",
+      "--plnly-font-body",
+      "--plnly-font-display",
+      "--plnly-font-mono",
+      "--plnly-font-serif",
+      "--plnly-greige",
+      "--plnly-greige-deep",
+      "--plnly-grid-cols",
+      "--plnly-grid-gutter",
+      "--plnly-grid-max",
+      "--plnly-h1-lh",
+      "--plnly-h1-ls",
+      "--plnly-h1-size",
+      "--plnly-h2-lh",
+      "--plnly-h2-ls",
+      "--plnly-h2-size",
+      "--plnly-h3-lh",
+      "--plnly-h3-ls",
+      "--plnly-h3-size",
+      "--plnly-harbor",
+      "--plnly-info",
+      "--plnly-ink",
+      "--plnly-ink-35",
+      "--plnly-ink-45",
+      "--plnly-ink-55",
+      "--plnly-ink-65",
+      "--plnly-ink-80",
+      "--plnly-label-ls",
+      "--plnly-lead-lh",
+      "--plnly-lead-size",
+      "--plnly-measure",
+      "--plnly-mint",
+      "--plnly-mist",
+      "--plnly-on-ink",
+      "--plnly-on-ink-dim",
+      "--plnly-on-ink-faint",
+      "--plnly-porcelain",
+      "--plnly-radius-card",
+      "--plnly-radius-card-lg",
+      "--plnly-radius-chip",
+      "--plnly-radius-pill",
+      "--plnly-radius-tile",
+      "--plnly-reveal-ls",
+      "--plnly-shadow-accent",
+      "--plnly-shadow-floating",
+      "--plnly-shadow-overlay",
+      "--plnly-shadow-raised",
+      "--plnly-small-lh",
+      "--plnly-small-size",
+      "--plnly-space-1",
+      "--plnly-space-10",
+      "--plnly-space-2",
+      "--plnly-space-3",
+      "--plnly-space-4",
+      "--plnly-space-5",
+      "--plnly-space-6",
+      "--plnly-space-7",
+      "--plnly-space-8",
+      "--plnly-space-9",
+      "--plnly-success",
+      "--plnly-surface",
+      "--plnly-surface-ink",
+      "--plnly-surface-quiet",
+      "--plnly-taupe",
+      "--plnly-text",
+      "--plnly-text-label",
+      "--plnly-text-muted",
+      "--plnly-text-on-ink",
+      "--plnly-text-secondary",
+      "--plnly-weight-light",
+      "--plnly-weight-medium",
+      "--plnly-weight-regular",
+      "--plnly-weight-semibold",
+      "--plnly-white",
+      "--plnly-wordmark-ls"
+    ],
+    "tokenKinds": {
+      "--plnly-porcelain": "color",
+      "--plnly-greige": "color",
+      "--plnly-greige-deep": "color",
+      "--plnly-taupe": "color",
+      "--plnly-ink": "color",
+      "--plnly-ink-80": "color",
+      "--plnly-ink-65": "color",
+      "--plnly-ink-55": "color",
+      "--plnly-ink-45": "color",
+      "--plnly-ink-35": "color",
+      "--plnly-on-ink": "color",
+      "--plnly-on-ink-dim": "color",
+      "--plnly-on-ink-faint": "color",
+      "--plnly-cream": "color",
+      "--plnly-white": "color",
+      "--plnly-mist": "color",
+      "--plnly-harbor": "color",
+      "--plnly-eucalyptus": "color",
+      "--plnly-mint": "color",
+      "--plnly-coral": "color",
+      "--plnly-coral-deep": "color",
+      "--plnly-success": "color",
+      "--plnly-info": "color",
+      "--plnly-caution": "color",
+      "--plnly-error": "color",
+      "--plnly-bg": "color",
+      "--plnly-bg-raised": "color",
+      "--plnly-surface": "color",
+      "--plnly-surface-quiet": "color",
+      "--plnly-surface-ink": "color",
+      "--plnly-text": "font",
+      "--plnly-text-secondary": "font",
+      "--plnly-text-muted": "font",
+      "--plnly-text-label": "font",
+      "--plnly-text-on-ink": "font",
+      "--plnly-accent": "color",
+      "--plnly-accent-text": "font",
+      "--plnly-border": "color",
+      "--plnly-border-strong": "color",
+      "--plnly-border-on-ink": "color",
+      "--plnly-font-display": "font",
+      "--plnly-font-serif": "font",
+      "--plnly-font-body": "font",
+      "--plnly-font-mono": "font",
+      "--plnly-weight-light": "font",
+      "--plnly-weight-regular": "font",
+      "--plnly-weight-medium": "font",
+      "--plnly-weight-semibold": "font",
+      "--plnly-display-size": "spacing",
+      "--plnly-h1-size": "spacing",
+      "--plnly-h2-size": "spacing",
+      "--plnly-h3-size": "spacing",
+      "--plnly-lead-size": "spacing",
+      "--plnly-body-size": "spacing",
+      "--plnly-small-size": "spacing",
+      "--plnly-caption-size": "spacing",
+      "--plnly-display-lh": "other",
+      "--plnly-h1-lh": "other",
+      "--plnly-h2-lh": "other",
+      "--plnly-h3-lh": "other",
+      "--plnly-lead-lh": "other",
+      "--plnly-body-lh": "other",
+      "--plnly-small-lh": "other",
+      "--plnly-caption-lh": "other",
+      "--plnly-display-ls": "other",
+      "--plnly-h1-ls": "other",
+      "--plnly-h2-ls": "other",
+      "--plnly-h3-ls": "other",
+      "--plnly-caption-ls": "other",
+      "--plnly-wordmark-ls": "other",
+      "--plnly-reveal-ls": "other",
+      "--plnly-label-ls": "other",
+      "--plnly-measure": "other",
+      "--plnly-space-1": "spacing",
+      "--plnly-space-2": "spacing",
+      "--plnly-space-3": "spacing",
+      "--plnly-space-4": "spacing",
+      "--plnly-space-5": "spacing",
+      "--plnly-space-6": "spacing",
+      "--plnly-space-7": "spacing",
+      "--plnly-space-8": "spacing",
+      "--plnly-space-9": "spacing",
+      "--plnly-space-10": "spacing",
+      "--plnly-grid-cols": "other",
+      "--plnly-grid-gutter": "spacing",
+      "--plnly-grid-max": "spacing",
+      "--plnly-radius-chip": "radius",
+      "--plnly-radius-card": "radius",
+      "--plnly-radius-card-lg": "radius",
+      "--plnly-radius-tile": "radius",
+      "--plnly-radius-pill": "radius",
+      "--plnly-shadow-raised": "shadow",
+      "--plnly-shadow-floating": "shadow",
+      "--plnly-shadow-overlay": "shadow",
+      "--plnly-shadow-accent": "shadow",
+      "--plnly-ease": "other",
+      "--plnly-dur-micro": "other",
+      "--plnly-dur-standard": "other",
+      "--plnly-dur-reveal": "other"
+    },
+    "fontFamilies": [
+      "Hanken Grotesk",
+      "IBM Plex Mono",
+      "Newsreader",
+      "Outfit"
+    ]
+  }
+}

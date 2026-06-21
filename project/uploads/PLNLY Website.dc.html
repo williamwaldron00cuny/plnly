@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#E3E1DA; }
+  * { -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; box-sizing:border-box; }
+  @keyframes plnly-rise { 0% { opacity:0; transform:translateY(12px); } 100% { opacity:1; transform:translateY(0); } }
+  @keyframes orbit-spin { to { transform:rotate(360deg); } }
+  a { text-decoration:none; color:inherit; }
+</style>
+</helmet>
+
+<div style="background:#E3E1DA; font-family:'Hanken Grotesk',sans-serif; color:#20242B; overflow-x:hidden;">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:20; background:rgba(227,225,218,.82); backdrop-filter:blur(10px); border-bottom:1px solid rgba(32,36,43,.08);">
+    <div style="max-width:1120px; margin:0 auto; padding:18px 40px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:22px; letter-spacing:.045em; color:#20242B;">PLNLY</div>
+        <div style="width:1px; height:18px; background:#20242B; opacity:.25;"></div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:15px; letter-spacing:.04em; color:#E25E3A;">plainly</div>
+      </div>
+      <nav style="display:flex; align-items:center; gap:32px;">
+        <a href="#service" style="font-size:14px; color:#4f4c46;">The service</a>
+        <a href="#who" style="font-size:14px; color:#4f4c46;">Who it's for</a>
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:8px; background:#20242B; color:#EFEDE7; font-weight:500; font-size:13.5px; padding:10px 18px; border-radius:999px;">Start the setup <span style="width:6px; height:6px; border-radius:50%; background:#E25E3A;"></span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative; max-width:1120px; margin:0 auto; padding:120px 40px 128px; overflow:hidden;">
+    <svg width="760" height="760" viewBox="0 0 760 760" fill="none" style="position:absolute; right:-200px; top:-120px; transform-origin:center; animation:orbit-spin 90s linear infinite; pointer-events:none;"><circle cx="380" cy="380" r="120" stroke="#20242B" stroke-opacity=".07" stroke-width="1"/><circle cx="380" cy="380" r="200" stroke="#20242B" stroke-opacity=".06" stroke-width="1"/><circle cx="380" cy="380" r="290" stroke="#20242B" stroke-opacity=".045" stroke-width="1"/><circle cx="380" cy="380" r="370" stroke="#20242B" stroke-opacity=".035" stroke-width="1"/><circle cx="660" cy="380" r="5" fill="#E25E3A" fill-opacity=".55"/><circle cx="380" cy="90" r="4" fill="#C2D8CC" fill-opacity=".7"/><circle cx="180" cy="560" r="3.5" fill="#9FB1BB" fill-opacity=".7"/></svg>
+    <div style="position:relative; max-width:760px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.28em; color:#8a857b; text-transform:uppercase;">Modern life, minus the jargon · Brooklyn, NY</div>
+      <h1 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:74px; line-height:1.04; letter-spacing:-.025em; color:#20242B; margin:26px 0 0;">Built bespoke. <span style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; color:#E25E3A;">Yours</span> to run.</h1>
+      <p style="font-size:20px; line-height:1.55; color:#3a3833; margin:30px 0 0; max-width:560px;">We set the tools of modern life up around how your household actually lives, teach you to run them, and hand over the keys. You own the capability — not a subscription to us.</p>
+      <div style="display:flex; align-items:center; gap:22px; margin-top:38px;">
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; background:#20242B; color:#EFEDE7; font-weight:500; font-size:15px; padding:15px 28px; border-radius:999px;">Start the setup <span style="width:7px; height:7px; border-radius:50%; background:#E25E3A;"></span></a>
+        <a href="#service" style="font-size:15px; color:#20242B; border-bottom:1px solid rgba(32,36,43,.3); padding-bottom:2px;">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONING BAND -->
+  <section style="background:#20242B; color:#E4E3DE;">
+    <div style="max-width:1120px; margin:0 auto; padding:90px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#7e848a; text-transform:uppercase;">The difference</div>
+      <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:40px; line-height:1.2; letter-spacing:-.015em; margin-top:22px; max-width:880px;">Everyone else runs the AI and keeps the keys. We set it up, teach you to run it, and <span style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; color:#E25E3A;">hand them over.</span></div>
+      <p style="font-size:17px; line-height:1.6; color:#aeb3b8; margin:24px 0 0; max-width:600px;">Ownership, not concierge. When we're done, the capability is yours to keep — and to grow on your own.</p>
+    </div>
+  </section>
+
+  <!-- SERVICE / THREE STEPS -->
+  <section id="service" style="max-width:1120px; margin:0 auto; padding:104px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">How it works</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 0; max-width:18ch;">Set up around how you <span style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; color:#E25E3A;">actually</span> live.</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px;">
+      <div>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#20242B" stroke-width="1.75"/><circle cx="12" cy="12" r="2.6" fill="#E25E3A"/></svg>
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:21px; color:#20242B; margin-top:20px;">Set up around you</div>
+        <p style="font-size:15px; line-height:1.6; color:#5c594f; margin:10px 0 0;">We configure the tools to your household's real rhythm — scheduling, groceries, travel, the operations of a home. Not a template.</p>
+      </div>
+      <div>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><line x1="5" y1="8" x2="19" y2="8" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="16" x2="14" y2="16" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/></svg>
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:21px; color:#20242B; margin-top:20px;">Taught, not done-for-you</div>
+        <p style="font-size:15px; line-height:1.6; color:#5c594f; margin:10px 0 0;">You learn to run it, at your pace, in plain language. We explain the real tool and the real task — never "AI-powered solutions."</p>
+      </div>
+      <div>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none"><line x1="4" y1="12" x2="18" y2="12" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><polyline points="13,7 18,12 13,17" stroke="#E25E3A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:21px; color:#20242B; margin-top:20px;">Then it's yours</div>
+        <p style="font-size:15px; line-height:1.6; color:#5c594f; margin:10px 0 0;">We hand over the keys. You stay in control of your own systems, and we're there when you want us — not because you need us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section id="who" style="background:#EFEDE7;">
+    <div style="max-width:1120px; margin:0 auto; padding:104px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#a09a8f; text-transform:uppercase;">Who it's for</div>
+      <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 56px;">Two households. One idea.</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
+        <div style="background:#E3E1DA; border-radius:6px; padding:40px;">
+          <div style="width:42px; height:42px; border-radius:11px; background:#9FB1BB; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="#20242B" stroke-width="1.75"/><circle cx="12" cy="12" r="8.5" stroke="#20242B" stroke-width="1.75" stroke-dasharray="2 3"/></svg></div>
+          <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:23px; color:#20242B; margin-top:24px;">Busy households</div>
+          <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; margin:12px 0 0;">You could figure the tools out yourself — you'd just rather not lose the weekend to it. We configure AI around your week and hand it back, with you still in control.</p>
+        </div>
+        <div style="background:#E3E1DA; border-radius:6px; padding:40px;">
+          <div style="width:42px; height:42px; border-radius:11px; background:#C2D8CC; display:flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="5" y1="8" x2="19" y2="8" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="16" x2="14" y2="16" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:23px; color:#20242B; margin-top:24px;">Parents of college-bound teens</div>
+          <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; margin:12px 0 0;">Real, responsible AI literacy before campus — NotebookLM, citations, the academic-integrity lines. Tool fluency, scoped tight. Not subject tutoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAINLY AI MOMENT -->
+  <section style="background:#20242B; color:#E4E3DE;">
+    <div style="max-width:1120px; margin:0 auto; padding:104px 40px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#7e848a; text-transform:uppercase;">The two letters we left out</div>
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:60px; letter-spacing:.04em; color:#E4E3DE; line-height:1; margin-top:26px;">PL<span style="color:#E25E3A;">AI</span>NLY</div>
+        <p style="font-size:16.5px; line-height:1.6; color:#aeb3b8; margin:26px 0 0; max-width:440px;">PLNLY is "plainly" with the A and the I taken out — modern life, minus the jargon. Our AI-literacy program is the one place we put them back. Same name, switched on.</p>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center;">
+        <svg width="240" height="240" viewBox="0 0 240 240" fill="none" style="transform-origin:center; animation:orbit-spin 60s linear infinite;"><circle cx="120" cy="120" r="44" stroke="#3b4048" stroke-width="1"/><circle cx="120" cy="120" r="78" stroke="#343941" stroke-width="1"/><circle cx="120" cy="120" r="108" stroke="#2c313a" stroke-width="1"/><circle cx="120" cy="120" r="5" fill="#E25E3A"/><circle cx="198" cy="120" r="3.5" fill="#9FB1BB"/><circle cx="120" cy="42" r="3.5" fill="#C2D8CC"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSENCE -->
+  <section style="max-width:1120px; margin:0 auto; padding:120px 40px; text-align:center;">
+    <div style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; font-size:56px; line-height:1.15; color:#20242B;">a beautiful plainness</div>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; color:#8a857b; text-transform:uppercase; margin-top:26px;">Modern life, minus the jargon.</div>
+  </section>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact" style="background:#EFEDE7; border-top:1px solid rgba(32,36,43,.08);">
+    <div style="max-width:1120px; margin:0 auto; padding:80px 40px 56px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:40px;">
+        <div>
+          <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:34px; letter-spacing:.045em; color:#20242B;">PLNLY</div>
+          <div style="display:flex; align-items:center; gap:11px; margin-top:8px;"><div style="width:28px; height:1px; background:#20242B; opacity:.4;"></div><div style="font-family:'Newsreader',serif; font-style:italic; font-size:18px; letter-spacing:.1em; color:#E25E3A;">plainly</div></div>
+          <p style="font-size:15px; line-height:1.5; color:#5c594f; margin:22px 0 0; max-width:300px;">Personal AI setup, teaching, and retainer. Brooklyn, NY — and online.</p>
+        </div>
+        <div style="display:flex; gap:64px; flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; color:#a09a8f; text-transform:uppercase;">Get in touch</div>
+            <a href="#contact" style="display:block; font-size:15px; color:#20242B; margin-top:14px;"><span class="__cf_email__" data-cfemail="167e737a7a7956667a787a6f387579">[email&#160;protected]</span></a>
+            <a href="#contact" style="display:block; font-size:15px; color:#20242B; margin-top:8px;">Book an intro call</a>
+          </div>
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; color:#a09a8f; text-transform:uppercase;">Elsewhere</div>
+            <a href="#contact" style="display:block; font-size:15px; color:#20242B; margin-top:14px;">Instagram</a>
+            <a href="#contact" style="display:block; font-size:15px; color:#20242B; margin-top:8px;">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:64px; padding-top:24px; border-top:1px solid rgba(32,36,43,.1); flex-wrap:wrap; gap:12px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:#8a857b;">© 2026 PLNLY · Brooklyn, NY</div>
+        <div style="display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:#8a857b;">Modern life, minus the jargon <span style="width:6px; height:6px; border-radius:50%; background:#E25E3A;"></span></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

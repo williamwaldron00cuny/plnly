@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#E3E1DA; }
+  * { -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; box-sizing:border-box; }
+  @keyframes orbit-spin { to { transform:rotate(360deg); } }
+  a { text-decoration:none; color:inherit; }
+  html { scroll-behavior:smooth; }
+</style>
+</helmet>
+
+<div style="background:#E3E1DA; font-family:'Hanken Grotesk',sans-serif; color:#20242B;">
+
+  <!-- COVER -->
+  <section id="top" style="position:relative; min-height:620px; display:flex; flex-direction:column; justify-content:space-between; padding:48px 56px 56px; overflow:hidden; border-bottom:1px solid rgba(32,36,43,.1);">
+    <svg width="680" height="680" viewBox="0 0 680 680" fill="none" style="position:absolute; right:-160px; top:-130px; transform-origin:center; animation:orbit-spin 110s linear infinite; pointer-events:none;"><circle cx="340" cy="340" r="110" stroke="#20242B" stroke-opacity=".07" stroke-width="1"/><circle cx="340" cy="340" r="180" stroke="#20242B" stroke-opacity=".06" stroke-width="1"/><circle cx="340" cy="340" r="255" stroke="#20242B" stroke-opacity=".05" stroke-width="1"/><circle cx="340" cy="340" r="330" stroke="#20242B" stroke-opacity=".04" stroke-width="1"/><circle cx="595" cy="340" r="5" fill="#E25E3A" fill-opacity=".55"/><circle cx="340" cy="85" r="4" fill="#C2D8CC" fill-opacity=".75"/><circle cx="150" cy="500" r="3.5" fill="#9FB1BB" fill-opacity=".7"/></svg>
+    <div style="position:relative; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.3em; color:#8a857b; text-transform:uppercase;">Brand Identity Guidelines</div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; color:#8a857b; text-transform:uppercase; text-align:right; line-height:1.7;">Version 1.0<br>June 2026 · Brooklyn, NY</div>
+    </div>
+    <div style="position:relative;">
+      <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:128px; letter-spacing:.045em; color:#20242B; padding-left:.045em; line-height:1;">PLNLY</div>
+      <div style="display:flex; align-items:center; gap:18px; margin-top:14px;"><div style="width:64px; height:1px; background:#20242B; opacity:.45;"></div><div style="font-family:'Newsreader',serif; font-style:italic; font-weight:400; font-size:34px; letter-spacing:.15em; color:#E25E3A; padding-left:.15em;">plainly</div></div>
+      <p style="font-size:18px; line-height:1.55; color:#3a3833; margin:34px 0 0; max-width:520px;">The living system behind a personal-AI brand that hands over the keys. Everything here is a rule meant to be applied — across the site, social, and print — not a picture to admire.</p>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section style="max-width:1080px; margin:0 auto; padding:60px 56px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">Contents</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 56px; margin-top:24px;">
+      <a href="#strategy" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Strategy &amp; positioning</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">01</span></a>
+      <a href="#logo" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Logo &amp; lockup</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">02</span></a>
+      <a href="#color" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Color system</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">03</span></a>
+      <a href="#type" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Typography</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">04</span></a>
+      <a href="#grid" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Spacing &amp; grid</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">05</span></a>
+      <a href="#icon" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Icon, imagery &amp; motif</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">06</span></a>
+      <a href="#voice" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">Motion &amp; voice</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">07</span></a>
+      <a href="#family" style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.1);"><span style="font-family:'Outfit'; font-weight:500; font-size:19px; color:#20242B;">The family &amp; PLAINLY</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#a09a8f;">08</span></a>
+    </div>
+  </section>
+
+  <!-- 01 STRATEGY -->
+  <section id="strategy" style="background:#20242B; color:#E4E3DE;">
+    <div style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#7e848a; text-transform:uppercase;">01 — Strategy &amp; positioning</div>
+      <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:42px; line-height:1.18; letter-spacing:-.015em; margin-top:22px; max-width:880px;">An ownership brand, not a concierge. We set the tools up, teach you to run them, and <span style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; color:#E25E3A;">hand over the keys.</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:28px; margin-top:56px;">
+        <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; color:#7e848a; text-transform:uppercase;">Promise</div><p style="font-size:15.5px; line-height:1.6; color:#cdd1d5; margin:12px 0 0;">Modern life, minus the jargon. Capability you keep — warm, considered, above the fray.</p></div>
+        <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; color:#7e848a; text-transform:uppercase;">Tagline</div><p style="font-size:15.5px; line-height:1.6; color:#cdd1d5; margin:12px 0 0;"><span style="font-family:'Outfit'; font-weight:500; color:#E4E3DE;">Built bespoke. Yours to run.</span> The ownership idea in four words.</p></div>
+        <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; color:#7e848a; text-transform:uppercase;">Audiences</div><p style="font-size:15.5px; line-height:1.6; color:#cdd1d5; margin:12px 0 0;">Busy households who want to own the capability; parents readying college-bound teens for responsible AI literacy.</p></div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:48px; flex-wrap:wrap;">
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#9aa0a6; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:8px 16px;">Warm, not eager</span>
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#9aa0a6; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:8px 16px;">A little mysterious</span>
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#9aa0a6; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:8px 16px;">Competent, never patronizing</span>
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#9aa0a6; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:8px 16px;">Quietly high-end</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 LOGO -->
+  <section id="logo" style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">02 — Logo &amp; lockup</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">The name, then the breath.</h2>
+    <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:640px; margin:0;">PLNLY never appears without <span style="font-family:'Newsreader',serif; font-style:italic; color:#b8492a;">plainly</span> on first contact. The divider sits equidistant between them. The coral dot is the brand's standalone device.</p>
+    <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:24px; margin-top:36px;">
+      <div style="background:#EBE8E1; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:72px 40px; text-align:center;">
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:76px; letter-spacing:.045em; color:#20242B; padding-left:.045em; line-height:1;">PLNLY</div>
+        <div style="width:42px; height:1px; background:#20242B; opacity:.45; margin:11px auto 11px;"></div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:24px; letter-spacing:.17em; color:#E25E3A; padding-left:.17em;">plainly</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; color:#9a948a; text-transform:uppercase; margin-top:30px;">Primary lockup</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="background:#20242B; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:30px; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:30px; letter-spacing:.045em; color:#E4E3DE;">PLNLY</div>
+          <div style="width:20px; height:1px; background:#E4E3DE; opacity:.45; margin:8px auto;"></div>
+          <div style="font-family:'Newsreader',serif; font-style:italic; font-size:14px; letter-spacing:.14em; color:#E25E3A;">plainly</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; color:#7e848a; text-transform:uppercase; margin-top:18px;">Reversed</div>
+        </div>
+        <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:30px; flex:1; display:flex; align-items:center; justify-content:center; gap:20px;">
+          <div style="width:50px; height:50px; border-radius:11px; background:#20242B; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Outfit'; font-weight:500; font-size:24px; color:#EBE8E1;">P<span style="color:#E25E3A;">.</span></span></div>
+          <div style="width:50px; height:50px; border-radius:50%; background:#E25E3A; display:flex; align-items:center; justify-content:center;"><span style="font-family:'Outfit'; font-weight:500; font-size:24px; color:#FBF8F3;">P.</span></div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; color:#9a948a; text-transform:uppercase;">Compact<br>marks</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-top:24px;">
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:26px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">Clear space</div><p style="font-size:13.5px; line-height:1.55; color:#5c594f; margin:8px 0 0;">Keep clear space equal to the cap-height of the “P” on all sides. Nothing intrudes.</p></div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:26px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">Minimum size</div><p style="font-size:13.5px; line-height:1.55; color:#5c594f; margin:8px 0 0;">22px wide on screen, 9mm in print. Below that, drop the reveal and use the compact mark.</p></div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:26px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#b8492a; text-transform:uppercase;">Never</div><p style="font-size:13.5px; line-height:1.55; color:#5c594f; margin:8px 0 0;">Don't recolor the wordmark, stretch it, set <span style="font-family:'Newsreader',serif; font-style:italic;">plainly</span> upright, or separate the two at first contact.</p></div>
+    </div>
+  </section>
+
+  <!-- 03 COLOR -->
+  <section id="color" style="background:#EFEDE7;">
+    <div style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#a09a8f; text-transform:uppercase;">03 — Color system</div>
+      <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">Greige leads. Coral, rarely.</h2>
+      <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:640px; margin:0 0 36px;">A 70·20·8·2 balance — neutrals, ink, layered hues, then one coral accent doing the loud work.</p>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px;">
+        <div><div style="height:88px; background:#EFEDE7; border:1px solid rgba(32,36,43,.08); border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">PORCELAIN<br><span style="color:#9a948a;">#EFEDE7</span></div></div>
+        <div><div style="height:88px; background:#E3E1DA; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">GREIGE<br><span style="color:#9a948a;">#E3E1DA</span></div></div>
+        <div><div style="height:88px; background:#D2CFC6; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">GREIGE DEEP<br><span style="color:#9a948a;">#D2CFC6</span></div></div>
+        <div><div style="height:88px; background:#8A8A85; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">STONE<br><span style="color:#9a948a;">#8A8A85</span></div></div>
+        <div><div style="height:88px; background:#20242B; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">INK<br><span style="color:#9a948a;">#20242B</span></div></div>
+        <div><div style="height:88px; background:#9FB1BB; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">MIST BLUE<br><span style="color:#9a948a;">#9FB1BB</span></div></div>
+        <div><div style="height:88px; background:#3E4F59; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">HARBOR<br><span style="color:#9a948a;">#3E4F59</span></div></div>
+        <div><div style="height:88px; background:#5E7468; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">EUCALYPTUS<br><span style="color:#9a948a;">#5E7468</span></div></div>
+        <div><div style="height:88px; background:#C2D8CC; border-radius:3px;"></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">MINT<br><span style="color:#9a948a;">#C2D8CC</span></div></div>
+        <div><div style="height:88px; background:#E25E3A; border-radius:3px; position:relative;"><span style="position:absolute; top:7px; right:7px; font-family:'IBM Plex Mono'; font-size:8px; color:#FBF8F3; letter-spacing:.1em;">2%</span></div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#5c594f; margin-top:8px; line-height:1.5;">CORAL<br><span style="color:#9a948a;">#E25E3A</span></div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px;">
+        <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">The 70 · 20 · 8 · 2</div>
+          <div style="display:flex; height:30px; border-radius:3px; overflow:hidden; margin-top:14px;"><div style="flex:70; background:#E3E1DA;"></div><div style="flex:20; background:#20242B;"></div><div style="flex:8; background:#5E7468;"></div><div style="flex:2; background:#E25E3A;"></div></div>
+          <p style="font-size:13px; line-height:1.55; color:#5c594f; margin:14px 0 0;">Neutrals · ink · layered hues · coral. If two coral things compete on one view, remove one.</p>
+        </div>
+        <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">Functional &amp; text-safe</div>
+          <div style="display:flex; gap:8px; margin-top:14px;"><div style="flex:1; text-align:center;"><div style="height:30px; background:#4F7A5E; border-radius:2px;"></div><div style="font-family:'IBM Plex Mono'; font-size:8.5px; color:#9a948a; margin-top:5px;">SUCCESS</div></div><div style="flex:1; text-align:center;"><div style="height:30px; background:#5E7E92; border-radius:2px;"></div><div style="font-family:'IBM Plex Mono'; font-size:8.5px; color:#9a948a; margin-top:5px;">INFO</div></div><div style="flex:1; text-align:center;"><div style="height:30px; background:#BE7A35; border-radius:2px;"></div><div style="font-family:'IBM Plex Mono'; font-size:8.5px; color:#9a948a; margin-top:5px;">CAUTION</div></div><div style="flex:1; text-align:center;"><div style="height:30px; background:#C0432A; border-radius:2px;"></div><div style="font-family:'IBM Plex Mono'; font-size:8.5px; color:#9a948a; margin-top:5px;">ERROR</div></div></div>
+          <p style="font-size:13px; line-height:1.55; color:#5c594f; margin:14px 0 0;">Use <span style="color:#B8492A; font-weight:500;">Coral Deep #B8492A</span> for coral text on light. Never set body copy in bright coral.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 TYPE -->
+  <section id="type" style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">04 — Typography</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">Four voices, each used once.</h2>
+    <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:640px; margin:0 0 36px;">Outfit headlines, Newsreader italic elevates one word, Hanken carries the reading, Plex Mono stamps the labels.</p>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;"><div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:40px; color:#20242B; line-height:1;">Aa</div><div style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#8d887d; text-transform:uppercase; margin-top:16px;">Outfit</div><p style="font-size:12.5px; line-height:1.5; color:#5c594f; margin:5px 0 0;">Display &amp; headlines · the wordmark</p></div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;"><div style="font-family:'Newsreader',serif; font-style:italic; font-weight:400; font-size:40px; color:#E25E3A; line-height:1;">Aa</div><div style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#8d887d; text-transform:uppercase; margin-top:16px;">Newsreader</div><p style="font-size:12.5px; line-height:1.5; color:#5c594f; margin:5px 0 0;">The elevated word · the reveal</p></div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;"><div style="font-family:'Hanken Grotesk',sans-serif; font-weight:400; font-size:40px; color:#20242B; line-height:1;">Aa</div><div style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#8d887d; text-transform:uppercase; margin-top:16px;">Hanken Grotesk</div><p style="font-size:12.5px; line-height:1.5; color:#5c594f; margin:5px 0 0;">Body &amp; interface · the workhorse</p></div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:28px;"><div style="font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:34px; color:#20242B; line-height:1;">Aa</div><div style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#8d887d; text-transform:uppercase; margin-top:16px;">IBM Plex Mono</div><p style="font-size:12.5px; line-height:1.5; color:#5c594f; margin:5px 0 0;">Labels &amp; data · the stamp</p></div>
+    </div>
+    <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:14px 36px; margin-top:18px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.08);"><div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:46px; letter-spacing:-.02em; color:#20242B; line-height:1;">Display</div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#9a948a;">OUTFIT · 60/1.04/−.02</div></div>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.08);"><div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:30px; letter-spacing:-.01em; color:#20242B; line-height:1;">Heading</div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#9a948a;">OUTFIT · 32/1.15/−.01</div></div>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(32,36,43,.08);"><div style="font-family:'Hanken Grotesk',sans-serif; font-weight:400; font-size:17px; color:#3a3833; line-height:1;">Body — set at 16/1.6, measure 45–75 characters.</div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#9a948a;">HANKEN · 16/1.6</div></div>
+      <div style="display:flex; align-items:baseline; justify-content:space-between; padding:16px 0;"><div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em; color:#5c594f; text-transform:uppercase;">Caption / label</div><div style="font-family:'IBM Plex Mono'; font-size:10px; color:#9a948a;">PLEX MONO · 12/.16 CAPS</div></div>
+    </div>
+  </section>
+
+  <!-- 05 GRID -->
+  <section id="grid" style="background:#EFEDE7;">
+    <div style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#a09a8f; text-transform:uppercase;">05 — Spacing &amp; grid</div>
+      <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">Eight-point rhythm. Twelve columns.</h2>
+      <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:640px; margin:0 0 36px;">Space is the brand's loudest material. When in doubt, add room — not ornament.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:30px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">Spacing scale · multiples of 8</div>
+          <div style="display:flex; align-items:flex-end; gap:8px; margin-top:20px; height:64px;"><div style="width:8px; background:#E25E3A; height:8px; border-radius:1px;"></div><div style="width:12px; background:#20242B; height:12px; border-radius:1px;"></div><div style="width:16px; background:#20242B; height:16px; border-radius:1px;"></div><div style="width:24px; background:#20242B; height:24px; border-radius:1px;"></div><div style="width:32px; background:#20242B; height:32px; border-radius:1px;"></div><div style="width:48px; background:#5E7468; height:48px; border-radius:1px;"></div><div style="width:64px; background:#5E7468; height:64px; border-radius:1px;"></div></div>
+          <p style="font-size:13px; line-height:1.55; color:#5c594f; margin:18px 0 0;">4–32 inside components · 48–64 between blocks · 96–128 between sections.</p>
+        </div>
+        <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:30px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#8d887d; text-transform:uppercase;">12 columns · radius · elevation</div>
+          <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:4px; margin-top:20px;"><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div><div style="height:40px; background:rgba(226,94,58,.12); border-radius:2px;"></div></div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:20px;"><div style="width:36px; height:36px; background:#E3E1DA; border-radius:2px;"></div><div style="width:36px; height:36px; background:#E3E1DA; border-radius:4px;"></div><div style="width:36px; height:36px; background:#E3E1DA; border-radius:12px;"></div><div style="width:36px; height:36px; background:#E3E1DA; border-radius:999px;"></div><span style="font-family:'IBM Plex Mono'; font-size:10px; color:#9a948a;">2 · 4 · 12 · pill</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 ICON -->
+  <section id="icon" style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">06 — Icon, imagery &amp; motif</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">Abstract before literal. A system in orbit.</h2>
+    <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:640px; margin:0 0 36px;">Icons built from the dot, the ring, the line — 1.75px stroke, round caps. The orbit is the cosmic nod that replaces every AI cliché.</p>
+    <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:stretch;">
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:36px; display:flex; align-items:center; justify-content:space-around; flex-wrap:wrap; gap:24px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#20242B" stroke-width="1.75"/><circle cx="12" cy="12" r="2.6" fill="#E25E3A"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#20242B" stroke-width="1.75"/><line x1="12" y1="12" x2="12" y2="7" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="12" y1="12" x2="15.5" y2="13.5" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><line x1="5" y1="8" x2="19" y2="8" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><line x1="5" y1="16" x2="14" y2="16" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><line x1="4" y1="12" x2="18" y2="12" stroke="#20242B" stroke-width="1.75" stroke-linecap="round"/><polyline points="13,7 18,12 13,17" stroke="#E25E3A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="#20242B" stroke-width="1.75"/><circle cx="12" cy="12" r="8.5" stroke="#20242B" stroke-width="1.75" stroke-dasharray="2 3"/></svg>
+      </div>
+      <div style="background:#20242B; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:30px; display:flex; align-items:center; justify-content:center;">
+        <svg width="150" height="150" viewBox="0 0 150 150" fill="none" style="transform-origin:center; animation:orbit-spin 56s linear infinite;"><circle cx="75" cy="75" r="28" stroke="#3b4048" stroke-width="1"/><circle cx="75" cy="75" r="50" stroke="#2c313a" stroke-width="1"/><circle cx="75" cy="75" r="4" fill="#E25E3A"/><circle cx="125" cy="75" r="3" fill="#9FB1BB"/><circle cx="75" cy="25" r="3" fill="#C2D8CC"/></svg>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px; flex-wrap:wrap; margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.04em;">
+      <div style="color:#4f7a5e;">DO — soft light · real rooms · objects &amp; hands · space to breathe · the orbit, large &amp; faint</div>
+      <div style="color:#b8492a;">AVOID — robots · circuits · neon · stock “tech” · cold blue gradients</div>
+    </div>
+  </section>
+
+  <!-- 07 MOTION & VOICE -->
+  <section id="voice" style="background:#20242B; color:#E4E3DE;">
+    <div style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#7e848a; text-transform:uppercase;">07 — Motion &amp; voice</div>
+      <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; margin:18px 0 8px;">Arrive, don't perform. Say it once.</h2>
+      <p style="font-size:15.5px; line-height:1.6; color:#aeb3b8; max-width:640px; margin:0 0 40px;">Motion is slow and rare: 160 / 320 / 700ms, gentle ease-out, no overshoot. Voice is plain language, capable not reassuring, with one elevated word.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:5px; padding:30px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#4f9a6e; text-transform:uppercase;">✓ Sounds like</div>
+          <div style="display:flex; flex-direction:column; gap:14px; margin-top:18px;">
+            <div style="font-family:'Newsreader',serif; font-size:19px; line-height:1.4; color:#E4E3DE;">“Here's the setup. You've got it from here.”</div>
+            <div style="font-family:'Newsreader',serif; font-size:19px; line-height:1.4; color:#E4E3DE;">“Built bespoke. Yours to run.”</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:5px; padding:30px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#d9826a; text-transform:uppercase;">✕ Never</div>
+          <div style="display:flex; flex-direction:column; gap:14px; margin-top:18px;">
+            <div style="font-size:17px; line-height:1.4; color:#7e848a; text-decoration:line-through; text-decoration-color:rgba(217,130,106,.5);">“Don't worry — it's so easy!”</div>
+            <div style="font-size:17px; line-height:1.4; color:#7e848a; text-decoration:line-through; text-decoration-color:rgba(217,130,106,.5);">“Unlock the power of AI to transform your life.”</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 FAMILY -->
+  <section id="family" style="max-width:1080px; margin:0 auto; padding:96px 56px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.24em; color:#8a857b; text-transform:uppercase;">08 — The family &amp; PLAINLY</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-weight:500; font-size:38px; line-height:1.12; letter-spacing:-.015em; color:#20242B; margin:18px 0 8px;">The two letters we left out.</h2>
+    <p style="font-size:15.5px; line-height:1.6; color:#4f4c46; max-width:660px; margin:0 0 36px;">PLNLY is “plainly” with the <strong style="font-weight:600;">A</strong> and the <strong style="font-weight:600;">I</strong> removed — modern life, minus the jargon, and quietly minus the “AI.” The first sub-brand, the AI-literacy program, is the one place we put them back. Future named lines inherit the same DNA with their own secondary hue.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="background:#20242B; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:54px 40px; text-align:center;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.22em; color:#7e848a; text-transform:uppercase; margin-bottom:22px;">The AI sub-brand</div>
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:56px; letter-spacing:.045em; color:#E4E3DE; padding-left:.045em; line-height:1;">PL<span style="color:#E25E3A;">AI</span>NLY</div>
+        <div style="width:34px; height:1px; background:#E4E3DE; opacity:.4; margin:14px auto;"></div>
+        <div style="font-family:'Newsreader',serif; font-style:italic; font-size:18px; letter-spacing:.15em; color:#E25E3A; padding-left:.15em;">plainly</div>
+      </div>
+      <div style="background:#fff; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:40px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'Outfit',sans-serif; font-weight:500; font-size:21px; color:#20242B;">Designed to scale.</div>
+        <p style="font-size:14.5px; line-height:1.62; color:#4f4c46; margin:12px 0 0;">The umbrella endorses from above; each property keeps its own front door. Shared: the geometric wordmark, the coral <span style="font-family:'Newsreader',serif; font-style:italic;">plainly</span>, the dot, the orbit. The naming convention for future lines is deferred — nothing is invented ahead of the brief.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section style="background:#EBE8E1; border-top:1px solid rgba(32,36,43,.1);">
+    <div style="max-width:1080px; margin:0 auto; padding:90px 56px; text-align:center;">
+      <div style="font-family:'Newsreader',serif; font-style:italic; font-weight:300; font-size:48px; line-height:1.15; color:#20242B;">a beautiful plainness</div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:11px; margin-top:24px;"><div style="width:28px; height:1px; background:#20242B; opacity:.4;"></div><span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; color:#8a857b; text-transform:uppercase;">Built bespoke. Yours to run.</span><div style="width:28px; height:1px; background:#20242B; opacity:.4;"></div></div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:#a09a8f; margin-top:40px;">PLNLY Brand Guidelines v1.0 · © 2026 · Brooklyn, NY</div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

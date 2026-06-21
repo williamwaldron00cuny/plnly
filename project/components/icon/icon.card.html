@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components" viewport="700x160" name="Icon · the abstract set" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>
+  body{margin:0;background:var(--plnly-greige);}
+  .wrap{padding:24px;display:grid;grid-template-columns:repeat(8,1fr);gap:10px;}
+  .c{background:var(--plnly-surface);border-radius:var(--plnly-radius-card);box-shadow:var(--plnly-shadow-raised);padding:16px 6px;text-align:center;}
+  .l{font-family:var(--plnly-font-mono);font-size:8.5px;letter-spacing:.05em;color:var(--plnly-ink-35);margin-top:9px;text-transform:uppercase;}
+</style></head>
+<body>
+<div id="root" class="wrap"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+  const NS = window.PLNLYDesignSystem_1cc2e7;
+  const { Icon, ICON_NAMES } = NS;
+  function Demo(){
+    return ICON_NAMES.map(n => (
+      <div className="c" key={n}>
+        <Icon name={n} size={32} coral={n==='handover'} />
+        <div className="l">{n}</div>
+      </div>
+    ));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>
