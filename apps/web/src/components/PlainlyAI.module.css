@@ -1,0 +1,19 @@
+.section {
+  padding: 104px 40px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mark {
+  font-size: 60px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .mark {
+    font-size: 40px;
+  }
+}

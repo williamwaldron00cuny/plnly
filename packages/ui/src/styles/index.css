@@ -1,0 +1,8 @@
+/* ============================================================
+   PLNLY Design System — global entry point.
+   Consumers link this one file. It only @imports; no rules live here.
+   ============================================================ */
+@import './fonts.css';
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';

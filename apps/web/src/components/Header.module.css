@@ -1,0 +1,13 @@
+.bar {
+  padding: 18px 40px;
+}
+
+@media (max-width: 760px) {
+  .bar {
+    padding: 16px 20px;
+  }
+
+  .navLink {
+    display: none;
+  }
+}

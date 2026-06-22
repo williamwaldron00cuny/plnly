@@ -1,0 +1,42 @@
+/* ============================================================
+   PLNLY · Spacing, grid, radius & elevation
+   Base unit 8 (4 as a half-step). Everything snaps to it.
+   "Space is the brand's loudest material — when in doubt, add room."
+   ============================================================ */
+:root {
+  /* --- Spacing scale --- */
+  --plnly-space-1:   4px;    /* half-step · icon gaps, chip insets   */
+  --plnly-space-2:   8px;    /* base                                 */
+  --plnly-space-3:   12px;
+  --plnly-space-4:   16px;
+  --plnly-space-5:   24px;
+  --plnly-space-6:   32px;   /* — inside components: 4–32 —          */
+  --plnly-space-7:   48px;
+  --plnly-space-8:   64px;   /* — between blocks: 48–64 —            */
+  --plnly-space-9:   96px;   /* section                              */
+  --plnly-space-10:  128px;  /* major · between sections: 96–128     */
+
+  /* --- Grid --- */
+  --plnly-grid-cols:    12;       /* @kind other */
+  --plnly-grid-gutter:  24px;
+  --plnly-grid-max:     1120px;   /* content max-width (1080–1120)   */
+
+  /* --- Corner radius · restrained, mostly square --- */
+  --plnly-radius-chip:  2px;      /* chips, tags                     */
+  --plnly-radius-card:  4px;      /* cards (default)                 */
+  --plnly-radius-card-lg: 6px;    /* larger cards                    */
+  --plnly-radius-tile:  12px;     /* tiles, icon wells               */
+  --plnly-radius-pill:  999px;    /* buttons                         */
+
+  /* --- Elevation · soft and low, never dramatic --- */
+  --plnly-shadow-raised:   0 1px 3px rgba(0, 0, 0, 0.06);
+  --plnly-shadow-floating: 0 4px 14px rgba(32, 36, 43, 0.12);
+  --plnly-shadow-overlay:  0 12px 34px rgba(32, 36, 43, 0.18);
+  --plnly-shadow-accent:   0 6px 20px rgba(226, 94, 58, 0.22); /* coral glow (favicon/CTA) */
+
+  /* --- Motion · arrive, don't perform --- */
+  --plnly-ease:          cubic-bezier(0.22, 0.61, 0.36, 1);  /* @kind other */  /* ease-out, no overshoot */
+  --plnly-dur-micro:     160ms;  /* @kind other */  /* hover               */
+  --plnly-dur-standard:  320ms;  /* @kind other */  /* enter               */
+  --plnly-dur-reveal:    700ms;  /* @kind other */  /* the wordmark reveal */
+}

@@ -1,0 +1,27 @@
+.section {
+  padding: 104px 40px;
+}
+
+.heading {
+  font-size: 38px;
+}
+
+.grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 20px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
