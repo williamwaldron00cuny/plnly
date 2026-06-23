@@ -1,0 +1,51 @@
+.section {
+  padding: 0 40px 104px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  overflow: hidden;
+}
+
+.copy {
+  padding: 56px;
+  flex: 1;
+}
+
+.heading {
+  font-size: 32px;
+}
+
+.orbitWrap {
+  flex: none;
+  padding-right: 48px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 0 20px 72px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .copy {
+    padding: 36px 28px 0;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .orbitWrap {
+    padding: 28px;
+    align-self: center;
+  }
+}

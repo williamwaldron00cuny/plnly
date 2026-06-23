@@ -1,0 +1,128 @@
+.section {
+  padding: 104px 40px;
+}
+
+.heading {
+  font-size: 38px;
+}
+
+.layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: none;
+  width: 260px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: var(--plnly-radius-card-lg);
+  padding: 14px 16px;
+  font-family: var(--plnly-font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--plnly-ink-65);
+  cursor: pointer;
+  transition: background var(--plnly-dur-micro) var(--plnly-ease),
+    color var(--plnly-dur-micro) var(--plnly-ease);
+}
+
+.chip:hover {
+  background: var(--plnly-porcelain);
+}
+
+.chip[data-active="true"] {
+  background: var(--plnly-surface);
+  color: var(--plnly-ink);
+  box-shadow: var(--plnly-shadow-raised);
+}
+
+.panel {
+  background: var(--plnly-surface);
+  border-radius: var(--plnly-radius-card-lg);
+  padding: 40px;
+  min-height: 280px;
+}
+
+.panelTitle {
+  font-family: var(--plnly-font-display);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--plnly-ink);
+}
+
+.panelDetail {
+  font-family: var(--plnly-font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--plnly-ink-55);
+  margin: 16px 0 0;
+  max-width: 56ch;
+}
+
+.toolList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--plnly-font-body);
+  font-size: 14.5px;
+  color: var(--plnly-ink-65);
+}
+
+.toolDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--plnly-coral);
+  flex: none;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 20px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .chips {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+  }
+
+  .chip {
+    width: auto;
+    flex: none;
+  }
+
+  .panel {
+    padding: 28px;
+  }
+}

@@ -12,9 +12,17 @@
 }
 
 .step {
+  display: block;
+  width: 100%;
+  text-align: left;
   padding: 24px;
   margin: -24px;
+  background: transparent;
+  border: none;
   border-radius: var(--plnly-radius-card-lg);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
   transition: transform var(--plnly-dur-standard) var(--plnly-ease),
     background var(--plnly-dur-standard) var(--plnly-ease);
 }
@@ -22,6 +30,26 @@
 .step:hover {
   transform: translateY(-4px);
   background: var(--plnly-porcelain);
+}
+
+.more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--plnly-dur-standard) var(--plnly-ease);
+}
+
+.more[data-open="true"] {
+  max-height: 240px;
+}
+
+.toggle {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--plnly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--plnly-coral-deep);
 }
 
 @media (max-width: 760px) {
