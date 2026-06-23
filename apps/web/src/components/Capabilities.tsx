@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Eyebrow, Icon } from "@plnly/ui";
 import type { IconName } from "@plnly/ui";
 import { italicCoral } from "./shared";
 import { Reveal } from "./Reveal";
 import styles from "./Capabilities.module.css";
 
-const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[] }[] = [
+const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[]; image: string }[] = [
   {
     name: "Scheduling",
     icon: "time",
     detail:
       "One shared calendar logic for the whole household — everyone's commitments in one place, with an assistant that actually understands your week instead of just reminding you of it.",
     tools: ["Shared calendars", "Reminders that read context", "Meeting & appointment triage"],
+    image: "/photos/handplanner.jpg",
   },
   {
     name: "Smart home",
@@ -21,6 +23,7 @@ const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[
     detail:
       "Lights, locks, thermostats, and speakers configured to work together by default — not eight separate apps you have to remember exist.",
     tools: ["Unified control hub", "Routines & automations", "Guest & sitter access"],
+    image: "/photos/smart-home-kitchen.jpg",
   },
   {
     name: "Travel",
@@ -28,6 +31,7 @@ const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[
     detail:
       "Trip planning that pulls flights, stays, and logistics into one view, plus the AI habits to keep it that way without you re-learning the tools every trip.",
     tools: ["Itinerary consolidation", "Packing & document checklists", "Real-time change alerts"],
+    image: "/photos/travel-plan.jpg",
   },
   {
     name: "AI literacy",
@@ -35,6 +39,7 @@ const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[
     detail:
       "The PLAINLY program — responsible, scoped AI fluency for students before campus. NotebookLM, citation hygiene, and where the academic-integrity line actually is.",
     tools: ["NotebookLM workflows", "Citation & source checking", "Scoped, not subject tutoring"],
+    image: "/photos/college-backpack.jpg",
   },
   {
     name: "Household admin",
@@ -42,6 +47,7 @@ const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[
     detail:
       "Bills, subscriptions, groceries, and the dozen small recurring tasks that quietly eat a weekend — set up once, run on autopilot, understood by you, not just us.",
     tools: ["Subscription & bill tracking", "Grocery & restock automation", "Shared task ownership"],
+    image: "/photos/laptop-morning-light.jpg",
   },
 ];
 
@@ -84,15 +90,27 @@ export function Capabilities() {
           </div>
           <Reveal key={current.name} style={{ flex: 1 }}>
             <div className={styles.panel}>
-              <div className={styles.panelTitle}>{current.name}</div>
-              <p className={styles.panelDetail}>{current.detail}</p>
-              <div className={styles.toolList}>
-                {current.tools.map((tool) => (
-                  <div className={styles.tool} key={tool}>
-                    <span className={styles.toolDot} />
-                    {tool}
-                  </div>
-                ))}
+              <div className={styles.panelImage}>
+                <Image
+                  src={current.image}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="(max-width: 760px) 100vw, 600px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className={styles.panelBody}>
+                <div className={styles.panelTitle}>{current.name}</div>
+                <p className={styles.panelDetail}>{current.detail}</p>
+                <div className={styles.toolList}>
+                  {current.tools.map((tool) => (
+                    <div className={styles.tool} key={tool}>
+                      <span className={styles.toolDot} />
+                      {tool}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>

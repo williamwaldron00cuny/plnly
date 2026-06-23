@@ -1,4 +1,5 @@
-import { Eyebrow, Orbit } from "@plnly/ui";
+import Image from "next/image";
+import { Eyebrow } from "@plnly/ui";
 import styles from "./PlainlyAI.module.css";
 
 export function PlainlyAI() {
@@ -44,8 +45,14 @@ export function PlainlyAI() {
             }
           </p>
         </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <Orbit tone="ink" size={240} spin duration={60} />
+        <div className={styles.imageWrap}>
+          <Image
+            src="/photos/college-backpack.jpg"
+            alt="A student walking onto campus with a backpack"
+            fill
+            sizes="(max-width: 760px) 100vw, 480px"
+            className={styles.image}
+          />
         </div>
       </div>
     </section>

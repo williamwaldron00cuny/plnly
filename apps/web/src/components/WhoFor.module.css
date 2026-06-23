@@ -20,6 +20,12 @@
   box-shadow: var(--plnly-shadow-floating);
 }
 
+.cardImage {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 72px 20px;

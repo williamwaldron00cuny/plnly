@@ -9,6 +9,7 @@ import { Service } from "./Service";
 import { Capabilities } from "./Capabilities";
 import { WhoFor } from "./WhoFor";
 import { PlainlyAI } from "./PlainlyAI";
+import { BrooklynBand } from "./BrooklynBand";
 import { FoundingNote } from "./FoundingNote";
 import { Essence } from "./Essence";
 import { FAQ } from "./FAQ";
@@ -46,6 +47,7 @@ export function Site() {
       <Reveal>
         <WhoFor />
       </Reveal>
+      <BrooklynBand />
       <Reveal>
         <PlainlyAI />
       </Reveal>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card, Eyebrow, Orbit } from "@plnly/ui";
 import { italicCoral } from "./shared";
 import styles from "./FoundingNote.module.css";
@@ -37,8 +38,17 @@ export function FoundingNote() {
               }
             </p>
           </div>
-          <div className={styles.orbitWrap}>
-            <Orbit tone="faint" size={200} spin duration={70} />
+          <div className={styles.imageWrap}>
+            <Image
+              src="/photos/brownstone-interior.jpg"
+              alt="A sunlit Brooklyn brownstone living room"
+              fill
+              className={styles.image}
+              sizes="(max-width: 760px) 100vw, 420px"
+            />
+            <div className={styles.orbitBadge}>
+              <Orbit tone="faint" size={56} />
+            </div>
           </div>
         </Card>
       </div>
