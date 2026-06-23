@@ -10,6 +10,16 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.card {
+  transition: transform var(--plnly-dur-standard) var(--plnly-ease),
+    box-shadow var(--plnly-dur-standard) var(--plnly-ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--plnly-shadow-floating);
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 72px 20px;

@@ -3,7 +3,13 @@ import styles from "./PlainlyAI.module.css";
 
 export function PlainlyAI() {
   return (
-    <section style={{ background: "var(--plnly-ink)", color: "var(--plnly-on-ink)" }}>
+    <section
+      style={{
+        background:
+          "radial-gradient(circle at 88% 50%, rgba(159,177,187,0.08), transparent 50%), var(--plnly-ink)",
+        color: "var(--plnly-on-ink)",
+      }}
+    >
       <div
         className={styles.section}
         style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gap: 48, alignItems: "center" }}
@@ -21,7 +27,7 @@ export function PlainlyAI() {
               marginTop: 26,
             }}
           >
-            PL<span style={{ color: "var(--plnly-coral)" }}>AI</span>NLY
+            PL<span style={{ color: "var(--plnly-coral)", fontWeight: 600 }}>AI</span>NLY
           </div>
           <p
             style={{

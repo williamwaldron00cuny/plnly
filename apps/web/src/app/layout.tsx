@@ -14,7 +14,7 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const hankenGrotesk = Hanken_Grotesk({

@@ -4,7 +4,13 @@ import styles from "./PositioningBand.module.css";
 
 export function PositioningBand() {
   return (
-    <section style={{ background: "var(--plnly-ink)", color: "var(--plnly-on-ink)" }}>
+    <section
+      style={{
+        background:
+          "radial-gradient(circle at 12% 18%, rgba(226,94,58,0.07), transparent 45%), var(--plnly-ink)",
+        color: "var(--plnly-on-ink)",
+      }}
+    >
       <div className={styles.section} style={{ maxWidth: 1120, margin: "0 auto" }}>
         <Eyebrow onInk>The difference</Eyebrow>
         <div

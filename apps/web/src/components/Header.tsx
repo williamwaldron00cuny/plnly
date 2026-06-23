@@ -41,6 +41,9 @@ export function Header({ onBook }: { onBook: () => void }) {
           <a href="#who" style={navLinkStyle} className={styles.navLink}>
             {"Who it's for"}
           </a>
+          <a href="#booking" style={navLinkStyle} className={styles.navLink}>
+            Book a call
+          </a>
           <Button size="sm" onClick={onBook}>
             Start the setup
           </Button>

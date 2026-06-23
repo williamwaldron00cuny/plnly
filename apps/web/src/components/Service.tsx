@@ -1,6 +1,7 @@
 import { Eyebrow, Icon } from "@plnly/ui";
 import type { IconName } from "@plnly/ui";
 import { italicCoral } from "./shared";
+import { Reveal } from "./Reveal";
 import styles from "./Service.module.css";
 
 const STEPS: { icon: IconName; title: string; body: string; coral?: boolean }[] = [
@@ -41,32 +42,34 @@ export function Service() {
         Set up around how you <em style={italicCoral}>actually</em> live.
       </h2>
       <div className={styles.grid} style={{ display: "grid", marginTop: 56 }}>
-        {STEPS.map((s) => (
-          <div key={s.title}>
-            <Icon name={s.icon} size={38} coral={s.coral} />
-            <div
-              style={{
-                fontFamily: "var(--plnly-font-display)",
-                fontWeight: 500,
-                fontSize: 21,
-                color: "var(--plnly-ink)",
-                marginTop: 20,
-              }}
-            >
-              {s.title}
+        {STEPS.map((s, i) => (
+          <Reveal key={s.title} delay={i * 90}>
+            <div className={styles.step}>
+              <Icon name={s.icon} size={38} coral={s.coral} />
+              <div
+                style={{
+                  fontFamily: "var(--plnly-font-display)",
+                  fontWeight: 500,
+                  fontSize: 21,
+                  color: "var(--plnly-ink)",
+                  marginTop: 20,
+                }}
+              >
+                {s.title}
+              </div>
+              <p
+                style={{
+                  fontFamily: "var(--plnly-font-body)",
+                  fontSize: 15,
+                  lineHeight: 1.6,
+                  color: "var(--plnly-ink-55)",
+                  margin: "10px 0 0",
+                }}
+              >
+                {s.body}
+              </p>
             </div>
-            <p
-              style={{
-                fontFamily: "var(--plnly-font-body)",
-                fontSize: 15,
-                lineHeight: 1.6,
-                color: "var(--plnly-ink-55)",
-                margin: "10px 0 0",
-              }}
-            >
-              {s.body}
-            </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
