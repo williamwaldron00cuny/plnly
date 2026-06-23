@@ -2,6 +2,15 @@
   padding: 80px 40px 56px;
 }
 
+.stoop {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--plnly-radius-card);
+  overflow: hidden;
+  flex: none;
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 56px 20px 40px;

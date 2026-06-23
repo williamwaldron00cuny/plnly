@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import { Card, Eyebrow, Icon } from "@plnly/ui";
 import { Reveal } from "./Reveal";
 import styles from "./WhoFor.module.css";
@@ -46,16 +47,27 @@ export function WhoFor() {
         </h2>
         <div className={styles.grid} style={{ display: "grid", gap: 28 }}>
           <Reveal>
-            <Card surface="quiet" elevation="flat" radius="card-lg" padding={40} className={styles.card}>
-              <div style={{ ...iconWell, background: "var(--plnly-mist)" }}>
-                <Icon name="orbit" size={20} />
+            <Card surface="quiet" elevation="flat" radius="card-lg" padding={0} className={styles.card}>
+              <div className={styles.cardImage}>
+                <Image
+                  src="/photos/family-breakfast-laptop.jpg"
+                  alt="A family at the breakfast table, one parent on a laptop"
+                  fill
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
-              <div style={cardTitle}>Busy households</div>
-              <p style={cardBody}>
-                {
-                  "You could figure the tools out yourself — you'd just rather not lose the weekend to it. We configure AI around your week and hand it back, with you still in control."
-                }
-              </p>
+              <div style={{ padding: 40 }}>
+                <div style={{ ...iconWell, background: "var(--plnly-mist)" }}>
+                  <Icon name="orbit" size={20} />
+                </div>
+                <div style={cardTitle}>Busy households</div>
+                <p style={cardBody}>
+                  {
+                    "You could figure the tools out yourself — you'd just rather not lose the weekend to it. We configure AI around your week and hand it back, with you still in control."
+                  }
+                </p>
+              </div>
             </Card>
           </Reveal>
           <Reveal delay={90}>

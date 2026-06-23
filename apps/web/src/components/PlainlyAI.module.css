@@ -7,6 +7,19 @@
   font-size: 60px;
 }
 
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: var(--plnly-radius-card-lg);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  filter: saturate(0.92);
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 72px 20px;

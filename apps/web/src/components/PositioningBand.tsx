@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Eyebrow } from "@plnly/ui";
 import { italicCoral } from "./shared";
 import styles from "./PositioningBand.module.css";
@@ -6,12 +7,23 @@ export function PositioningBand() {
   return (
     <section
       style={{
+        position: "relative",
         background:
           "radial-gradient(circle at 12% 18%, rgba(226,94,58,0.07), transparent 45%), var(--plnly-ink)",
         color: "var(--plnly-on-ink)",
+        overflow: "hidden",
       }}
     >
-      <div className={styles.section} style={{ maxWidth: 1120, margin: "0 auto" }}>
+      <Image
+        src="/photos/family-busy-kitchen.jpg"
+        alt=""
+        aria-hidden
+        fill
+        sizes="100vw"
+        className={styles.texture}
+        style={{ objectFit: "cover" }}
+      />
+      <div className={styles.section} style={{ position: "relative", maxWidth: 1120, margin: "0 auto" }}>
         <Eyebrow onInk>The difference</Eyebrow>
         <div
           className={styles.heading}
