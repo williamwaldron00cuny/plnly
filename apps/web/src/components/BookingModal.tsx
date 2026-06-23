@@ -4,6 +4,34 @@ import { italicCoral } from "./shared";
 
 export function BookingModal({ onClose }: { onClose: () => void }) {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [requestDetail, setRequestDetail] = useState("");
+
+  const submit = async () => {
+    if (!name || !email || !requestDetail) {
+      setError("Fill in all three fields and we'll take it from there.");
+      return;
+    }
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, request: requestDetail }),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setError("Something went wrong sending that — try again, or email hello@plnly.co directly.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <div
       onClick={onClose}
@@ -66,6 +94,20 @@ export function BookingModal({ onClose }: { onClose: () => void }) {
                 {"We'll reach out within a day to find a time. No phone tree, no chatbot — just us."}
               </p>
               <Button onClick={onClose}>Back to the site</Button>
+              <div style={{ marginTop: 14 }}>
+                <a
+                  href="#booking"
+                  onClick={onClose}
+                  style={{
+                    fontFamily: "var(--plnly-font-body)",
+                    fontSize: 13.5,
+                    color: "var(--plnly-ink-55)",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Or pick a time yourself
+                </a>
+              </div>
             </div>
           ) : (
             <>
@@ -95,11 +137,40 @@ export function BookingModal({ onClose }: { onClose: () => void }) {
                 A short note is plenty. We read every one.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                <Input label="Name" placeholder="Your name" />
-                <Input label="Email" placeholder="you@household.com" type="email" />
-                <Input label="What would you like set up?" placeholder="Scheduling, travel, the kids' tools…" />
-                <Button onClick={() => setSent(true)} style={{ marginTop: 4 }}>
-                  Send it over
+                <Input
+                  label="Name"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Input
+                  label="Email"
+                  placeholder="you@household.com"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                  label="What would you like set up?"
+                  placeholder="Scheduling, travel, the kids' tools…"
+                  value={requestDetail}
+                  onChange={(e) => setRequestDetail(e.target.value)}
+                />
+                {error && (
+                  <p
+                    style={{
+                      fontFamily: "var(--plnly-font-body)",
+                      fontSize: 13,
+                      lineHeight: 1.5,
+                      color: "var(--plnly-error)",
+                      margin: 0,
+                    }}
+                  >
+                    {error}
+                  </p>
+                )}
+                <Button onClick={submit} disabled={sending} style={{ marginTop: 4 }}>
+                  {sending ? "Sending…" : "Send it over"}
                 </Button>
               </div>
             </>

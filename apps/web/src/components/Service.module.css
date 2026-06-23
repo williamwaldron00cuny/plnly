@@ -11,6 +11,19 @@
   gap: 28px;
 }
 
+.step {
+  padding: 24px;
+  margin: -24px;
+  border-radius: var(--plnly-radius-card-lg);
+  transition: transform var(--plnly-dur-standard) var(--plnly-ease),
+    background var(--plnly-dur-standard) var(--plnly-ease);
+}
+
+.step:hover {
+  transform: translateY(-4px);
+  background: var(--plnly-porcelain);
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 72px 20px;

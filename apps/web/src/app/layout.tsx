@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "@plnly/ui/styles.css";
 import "./globals.css";
 
@@ -13,7 +14,7 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -44,7 +45,10 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${newsreader.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
