@@ -6,8 +6,8 @@ export function BrooklynBand() {
     <section className={styles.section}>
       <video
         className={styles.video}
-        src="/video/brooklyn-bridge.mp4"
-        poster="/photos/brooklyn-bridge-poster.jpg"
+        src="/video/bridge-flow.mp4"
+        poster="/photos/bridge-flow-poster.jpg"
         autoPlay
         muted
         loop

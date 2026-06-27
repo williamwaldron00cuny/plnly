@@ -15,14 +15,14 @@ const CATEGORIES: {
     name: "Scheduling",
     icon: "time",
     tools: ["Shared calendars", "Reminders that read context", "Meeting & appointment triage"],
-    image: "/photos/handplanner.jpg",
+    image: "/photos/calendar-cross.jpg",
     col: "span 2",
   },
   {
     name: "Smart home",
     icon: "ring",
     tools: ["Unified control hub", "Routines & automations", "Guest & sitter access"],
-    image: "/photos/smart-home-kitchen.jpg",
+    image: "/photos/tv-home.jpg",
   },
   {
     name: "Travel",
@@ -40,7 +40,7 @@ const CATEGORIES: {
     name: "Household admin",
     icon: "plan",
     tools: ["Subscription & bill tracking", "Grocery & restock automation", "Shared task ownership"],
-    image: "/photos/laptop-morning-light.jpg",
+    image: "/photos/groceries-delivery.jpg",
     col: "span 3",
   },
 ];

@@ -15,7 +15,7 @@ export function PositioningBand() {
       }}
     >
       <Image
-        src="/photos/family-busy-kitchen.jpg"
+        src="/photos/loft-workspace.jpg"
         alt=""
         aria-hidden
         fill
