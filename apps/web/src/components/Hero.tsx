@@ -35,7 +35,7 @@ export function Hero({ onBook }: { onBook: () => void }) {
           transition: "transform 600ms var(--plnly-ease)",
         }}
       >
-        <Orbit tone="faint" size={760} spin duration={90} />
+        <Orbit tone="faint" size={760} spin duration={90} breathe breatheDuration={9} />
       </div>
       <div style={{ position: "relative", maxWidth: 760 }}>
         <Eyebrow>Modern life, minus the jargon · Brooklyn, NY</Eyebrow>

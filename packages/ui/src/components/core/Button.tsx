@@ -25,12 +25,19 @@ export function Button({
   style,
   onMouseEnter,
   onMouseLeave,
+  onMouseDown,
+  onMouseUp,
   ...rest
 }: ButtonProps) {
   const [hovered, setHovered] = React.useState(false);
+  const [pressed, setPressed] = React.useState(false);
   const pad = { sm: '9px 16px', md: '12px 22px', lg: '15px 28px' }[size];
   const fontSize = { sm: 13, md: 14, lg: 15 }[size];
   const dotSize = { sm: 6, md: 7, lg: 7 }[size];
+
+  const computedTransform = !disabled && pressed
+    ? 'scale(0.95)'
+    : (!disabled && hovered ? 'translateY(-2px)' : 'none');
 
   const base: React.CSSProperties = {
     display: 'inline-flex',
@@ -45,10 +52,11 @@ export function Button({
     border: '1px solid transparent',
     cursor: disabled ? 'not-allowed' : 'pointer',
     opacity: disabled ? 0.45 : 1,
-    transform: hovered && !disabled ? 'translateY(-2px)' : 'translateY(0)',
-    boxShadow: hovered && !disabled && variant === 'primary' ? 'var(--plnly-shadow-accent)' : 'none',
-    transition:
-      'background var(--plnly-dur-micro) var(--plnly-ease), color var(--plnly-dur-micro) var(--plnly-ease), opacity var(--plnly-dur-micro) var(--plnly-ease), transform var(--plnly-dur-micro) var(--plnly-ease), box-shadow var(--plnly-dur-micro) var(--plnly-ease)',
+    transform: computedTransform,
+    boxShadow: hovered && !disabled && !pressed && variant === 'primary' ? 'var(--plnly-shadow-accent)' : 'none',
+    transition: pressed
+      ? 'transform 70ms ease-in, box-shadow 70ms ease-in'
+      : 'background var(--plnly-dur-micro) var(--plnly-ease), color var(--plnly-dur-micro) var(--plnly-ease), opacity var(--plnly-dur-micro) var(--plnly-ease), transform var(--plnly-dur-micro) var(--plnly-ease), box-shadow var(--plnly-dur-micro) var(--plnly-ease)',
     textDecoration: 'none',
     whiteSpace: 'nowrap',
   };
@@ -84,7 +92,16 @@ export function Button({
       }}
       onMouseLeave={(e) => {
         setHovered(false);
+        setPressed(false);
         onMouseLeave?.(e);
+      }}
+      onMouseDown={(e) => {
+        setPressed(true);
+        onMouseDown?.(e);
+      }}
+      onMouseUp={(e) => {
+        setPressed(false);
+        onMouseUp?.(e);
       }}
       {...rest}
     >
@@ -97,6 +114,11 @@ export function Button({
             borderRadius: '50%',
             background: 'var(--plnly-coral)',
             flex: 'none',
+            transition: 'transform var(--plnly-dur-micro) var(--plnly-ease), box-shadow var(--plnly-dur-micro) var(--plnly-ease)',
+            transform: hovered && !disabled && !pressed ? 'scale(1.3)' : 'scale(1)',
+            boxShadow: hovered && !disabled && !pressed && variant === 'primary'
+              ? '0 0 7px 2px rgba(226,94,58,0.5)'
+              : 'none',
           }}
         />
       )}
