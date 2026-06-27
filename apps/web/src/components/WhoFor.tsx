@@ -50,11 +50,11 @@ export function WhoFor() {
             <Card surface="quiet" elevation="flat" radius="card-lg" padding={0} className={styles.card}>
               <div className={styles.cardImage}>
                 <Image
-                  src="/photos/family-breakfast-laptop.jpg"
-                  alt="A family at the breakfast table, one parent on a laptop"
+                  src="/photos/dog-desk.jpg"
+                  alt="A golden retriever resting under a clean home office desk"
                   fill
                   sizes="(max-width: 760px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center 30%" }}
                 />
               </div>
               <div style={{ padding: 40 }}>
@@ -71,15 +71,26 @@ export function WhoFor() {
             </Card>
           </Reveal>
           <Reveal delay={90}>
-            <Card surface="quiet" elevation="flat" radius="card-lg" padding={40} className={styles.card}>
-              <div style={{ ...iconWell, background: "var(--plnly-mint)" }}>
-                <Icon name="plan" size={20} />
+            <Card surface="quiet" elevation="flat" radius="card-lg" padding={0} className={styles.card}>
+              <div className={styles.cardImage}>
+                <Image
+                  src="/photos/nyc-park.jpg"
+                  alt="People relaxing in a sunlit New York City park"
+                  fill
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                  style={{ objectFit: "cover", objectPosition: "center 40%" }}
+                />
               </div>
-              <div style={cardTitle}>Parents of college-bound teens</div>
-              <p style={cardBody}>
-                Real, responsible AI literacy before campus — NotebookLM, citations, the
-                academic-integrity lines. Tool fluency, scoped tight. Not subject tutoring.
-              </p>
+              <div style={{ padding: 40 }}>
+                <div style={{ ...iconWell, background: "var(--plnly-mint)" }}>
+                  <Icon name="plan" size={20} />
+                </div>
+                <div style={cardTitle}>Parents of college-bound teens</div>
+                <p style={cardBody}>
+                  Real, responsible AI literacy before campus — NotebookLM, citations, the
+                  academic-integrity lines. Tool fluency, scoped tight. Not subject tutoring.
+                </p>
+              </div>
             </Card>
           </Reveal>
         </div>

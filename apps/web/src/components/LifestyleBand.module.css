@@ -1,0 +1,43 @@
+.section {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  animation: plnly-kenburns 22s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes plnly-kenburns {
+  from {
+    transform: scale(1.06) translate(1.5%, 0.5%);
+  }
+  to {
+    transform: scale(1.0) translate(-1%, -0.5%);
+  }
+}
+
+/* Very subtle warm vignette — keeps edges from feeling raw */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(32, 36, 43, 0.18) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    height: 320px;
+  }
+}
