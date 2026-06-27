@@ -11,6 +11,10 @@ export interface OrbitProps extends React.SVGAttributes<SVGSVGElement> {
   duration?: number;
   /** Show the mint/mist satellite points. @default true */
   satellites?: boolean;
+  /** Subtle ring scale pulse — expand and contract like a breath. @default false */
+  breathe?: boolean;
+  /** Seconds per breath cycle. @default 8 */
+  breatheDuration?: number;
 }
 
 /**
@@ -23,6 +27,8 @@ export function Orbit({
   spin = false,
   duration = 90,
   satellites = true,
+  breathe = false,
+  breatheDuration = 8,
   style,
   ...rest
 }: OrbitProps) {
@@ -45,18 +51,47 @@ export function Orbit({
       }}
       {...rest}
     >
-      <circle cx="120" cy="120" r="40" stroke={ring[0]} strokeWidth="1" />
-      <circle cx="120" cy="120" r="72" stroke={ring[1]} strokeWidth="1" />
-      <circle cx="120" cy="120" r="104" stroke={ring[2]} strokeWidth="1" />
+      <g
+        style={breathe ? {
+          transformBox: 'fill-box',
+          transformOrigin: 'center',
+          animation: `plnly-orbit-breathe ${breatheDuration}s ease-in-out infinite alternate`,
+        } : undefined}
+      >
+        <circle cx="120" cy="120" r="40" stroke={ring[0]} strokeWidth="1" />
+        <circle cx="120" cy="120" r="72" stroke={ring[1]} strokeWidth="1" />
+        <circle cx="120" cy="120" r="104" stroke={ring[2]} strokeWidth="1" />
+      </g>
       <circle cx="120" cy="120" r="6" fill="#E25E3A" fillOpacity={centerOpacity} />
       {satellites && (
         <>
-          <circle cx="192" cy="120" r="4" fill="#9FB1BB" fillOpacity={onInk ? 1 : 0.7} />
-          <circle cx="80" cy="48" r="4.5" fill="#C2D8CC" fillOpacity={onInk ? 1 : 0.7} />
+          <circle cx="192" cy="120" r="4" fill="#9FB1BB" fillOpacity={onInk ? 1 : 0.7}>
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 120 120"
+              to="360 120 120"
+              dur="45s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="80" cy="48" r="4.5" fill="#C2D8CC" fillOpacity={onInk ? 1 : 0.7}>
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 120 120"
+              to="360 120 120"
+              dur="28s"
+              repeatCount="indefinite"
+            />
+          </circle>
         </>
       )}
-      <style>{`@keyframes plnly-orbit-spin { to { transform: rotate(360deg); } }
-        @media (prefers-reduced-motion: reduce) { svg { animation: none !important; } }`}</style>
+      <style>{`
+        @keyframes plnly-orbit-spin { to { transform: rotate(360deg); } }
+        @keyframes plnly-orbit-breathe { from { transform: scale(1); } to { transform: scale(1.035); } }
+        @media (prefers-reduced-motion: reduce) { svg { animation: none !important; } }
+      `}</style>
     </svg>
   );
 }

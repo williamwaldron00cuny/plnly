@@ -1,60 +1,51 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import { Eyebrow, Icon } from "@plnly/ui";
 import type { IconName } from "@plnly/ui";
 import { italicCoral } from "./shared";
-import { Reveal } from "./Reveal";
 import styles from "./Capabilities.module.css";
 
-const CATEGORIES: { name: string; icon: IconName; detail: string; tools: string[]; image: string }[] = [
+const CATEGORIES: {
+  name: string;
+  icon: IconName;
+  tools: string[];
+  image: string;
+  col?: string;
+}[] = [
   {
     name: "Scheduling",
     icon: "time",
-    detail:
-      "One shared calendar logic for the whole household — everyone's commitments in one place, with an assistant that actually understands your week instead of just reminding you of it.",
     tools: ["Shared calendars", "Reminders that read context", "Meeting & appointment triage"],
     image: "/photos/handplanner.jpg",
+    col: "span 2",
   },
   {
     name: "Smart home",
     icon: "ring",
-    detail:
-      "Lights, locks, thermostats, and speakers configured to work together by default — not eight separate apps you have to remember exist.",
     tools: ["Unified control hub", "Routines & automations", "Guest & sitter access"],
     image: "/photos/smart-home-kitchen.jpg",
   },
   {
     name: "Travel",
     icon: "place",
-    detail:
-      "Trip planning that pulls flights, stays, and logistics into one view, plus the AI habits to keep it that way without you re-learning the tools every trip.",
     tools: ["Itinerary consolidation", "Packing & document checklists", "Real-time change alerts"],
     image: "/photos/travel-plan.jpg",
   },
   {
     name: "AI literacy",
     icon: "focus",
-    detail:
-      "The PLAINLY program — responsible, scoped AI fluency for students before campus. NotebookLM, citation hygiene, and where the academic-integrity line actually is.",
     tools: ["NotebookLM workflows", "Citation & source checking", "Scoped, not subject tutoring"],
     image: "/photos/college-backpack.jpg",
   },
   {
     name: "Household admin",
     icon: "plan",
-    detail:
-      "Bills, subscriptions, groceries, and the dozen small recurring tasks that quietly eat a weekend — set up once, run on autopilot, understood by you, not just us.",
     tools: ["Subscription & bill tracking", "Grocery & restock automation", "Shared task ownership"],
     image: "/photos/laptop-morning-light.jpg",
+    col: "span 3",
   },
 ];
 
 export function Capabilities() {
-  const [active, setActive] = useState(0);
-  const current = CATEGORIES[active];
-
   return (
     <section style={{ background: "var(--plnly-greige)" }}>
       <div className={styles.section} style={{ maxWidth: 1120, margin: "0 auto" }}>
@@ -68,44 +59,34 @@ export function Capabilities() {
             letterSpacing: "-0.015em",
             color: "var(--plnly-ink)",
             margin: "18px 0 48px",
-            maxWidth: "20ch",
+            maxWidth: "22ch",
           }}
         >
-          Pick a corner of your life. <em style={italicCoral}>See how it works.</em>
+          Pick a corner of your life. <em style={italicCoral}>Hover to explore.</em>
         </h2>
-        <div className={styles.layout}>
-          <div className={styles.chips}>
-            {CATEGORIES.map((cat, i) => (
-              <button
-                key={cat.name}
-                onClick={() => setActive(i)}
-                className={styles.chip}
-                data-active={i === active}
-                type="button"
-              >
-                <Icon name={cat.icon} size={20} coral={i === active} />
-                <span>{cat.name}</span>
-              </button>
-            ))}
-          </div>
-          <Reveal key={current.name} style={{ flex: 1 }}>
-            <div className={styles.panel}>
-              <div className={styles.panelImage}>
+        <div className={styles.bento}>
+          {CATEGORIES.map((cat) => (
+            <div
+              key={cat.name}
+              className={styles.card}
+              data-col={cat.col ?? "span 1"}
+            >
+              <div className={styles.cardBg}>
                 <Image
-                  src={current.image}
+                  src={cat.image}
                   alt=""
                   aria-hidden
                   fill
-                  sizes="(max-width: 760px) 100vw, 600px"
+                  sizes="(max-width: 760px) 100vw, 560px"
                   style={{ objectFit: "cover" }}
                 />
               </div>
-              <div className={styles.panelBody}>
-                <div className={styles.panelTitle}>{current.name}</div>
-                <p className={styles.panelDetail}>{current.detail}</p>
+              <div className={styles.cardContent}>
+                <Icon name={cat.icon} size={22} />
+                <div className={styles.cardName}>{cat.name}</div>
                 <div className={styles.toolList}>
-                  {current.tools.map((tool) => (
-                    <div className={styles.tool} key={tool}>
+                  {cat.tools.map((tool) => (
+                    <div key={tool} className={styles.tool}>
                       <span className={styles.toolDot} />
                       {tool}
                     </div>
@@ -113,7 +94,7 @@ export function Capabilities() {
                 </div>
               </div>
             </div>
-          </Reveal>
+          ))}
         </div>
       </div>
     </section>
