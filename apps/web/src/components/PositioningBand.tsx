@@ -1,29 +1,22 @@
-import Image from "next/image";
 import { Eyebrow } from "@plnly/ui";
 import { italicCoral } from "./shared";
 import styles from "./PositioningBand.module.css";
 
 export function PositioningBand() {
   return (
-    <section
-      style={{
-        position: "relative",
-        background:
-          "radial-gradient(circle at 12% 18%, rgba(226,94,58,0.07), transparent 45%), var(--plnly-ink)",
-        color: "var(--plnly-on-ink)",
-        overflow: "hidden",
-      }}
-    >
-      <Image
-        src="/photos/loft-workspace.jpg"
-        alt=""
-        aria-hidden
-        fill
-        sizes="100vw"
-        className={styles.texture}
-        style={{ objectFit: "cover" }}
+    <section className={styles.section}>
+      <video
+        className={styles.video}
+        src="/video/bridge-flow.mp4"
+        poster="/photos/bridge-flow-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
       />
-      <div className={styles.section} style={{ position: "relative", maxWidth: 1120, margin: "0 auto" }}>
+      <div className={styles.scrim} />
+      <div className={styles.content} style={{ maxWidth: 1120, margin: "0 auto" }}>
         <Eyebrow onInk>The difference</Eyebrow>
         <div
           className={styles.heading}
@@ -44,7 +37,7 @@ export function PositioningBand() {
             fontFamily: "var(--plnly-font-body)",
             fontSize: 17,
             lineHeight: 1.6,
-            color: "var(--plnly-on-ink-dim)",
+            color: "rgba(251,248,243,0.72)",
             margin: "24px 0 0",
             maxWidth: 600,
           }}

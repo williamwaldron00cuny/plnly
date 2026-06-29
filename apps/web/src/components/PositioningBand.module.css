@@ -1,11 +1,38 @@
-.texture {
-  opacity: 0.22;
-  filter: grayscale(0.3) contrast(1.05) brightness(1.05);
-  mix-blend-mode: luminosity;
+.section {
+  position: relative;
+  min-height: 580px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--plnly-on-ink);
 }
 
-.section {
-  padding: 90px 40px;
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(1.2) saturate(1.08);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(32, 36, 43, 0.04) 0%,
+    rgba(32, 36, 43, 0.18) 45%,
+    rgba(32, 36, 43, 0.58) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
 }
 
 .heading {
@@ -14,7 +41,11 @@
 
 @media (max-width: 760px) {
   .section {
-    padding: 64px 20px;
+    min-height: 440px;
+  }
+
+  .content {
+    padding: 60px 20px;
   }
 
   .heading {

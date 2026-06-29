@@ -14,28 +14,15 @@
   margin-top: 56px;
 }
 
-.orbitArea {
-  position: relative;
+/* The SVG scales naturally via viewBox — no pixel tricks needed */
+.orbitSvg {
   width: 480px;
   height: 480px;
   flex-shrink: 0;
+  overflow: visible;
 }
 
-/* Inner container stays at 480×480 in DOM; scaled down on small viewports */
-.orbitInner {
-  position: absolute;
-  inset: 0;
-  width: 480px;
-  height: 480px;
-}
-
-.orbitSvg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
+/* Ring pulse */
 .ringsGroup {
   transform-box: fill-box;
   transform-origin: center;
@@ -44,44 +31,23 @@
 
 @keyframes caps-breathe {
   from { transform: scale(1); }
-  to { transform: scale(1.035); }
+  to   { transform: scale(1.035); }
 }
 
-/* Zero-size pivot at orbit center — rotates to carry the dot around */
-.orbitDotWrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-origin: 0 0;
-  animation: caps-orbit var(--dur, 60s) linear infinite;
-  animation-delay: var(--delay, 0s);
+/*
+  Each <g> orbits around the SVG center (120 120).
+  transform-box: view-box makes 50% 50% = the viewBox center.
+  animation-play-state is set inline via React state.
+*/
+.orbitGroup {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: svg-orbit var(--dur, 60s) linear infinite;
 }
 
-@keyframes caps-orbit {
-  to { transform: rotate(360deg); }
-}
-
-/* The colored planet dot — sits at radius --r from orbit center */
-.orbitDot {
-  position: absolute;
-  top: 0;
-  left: var(--r, 208px);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--color, #9FB1BB);
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition: width 0.25s var(--plnly-ease),
-              height 0.25s var(--plnly-ease),
-              box-shadow 0.25s var(--plnly-ease);
-}
-
-.orbitDotActive {
-  width: 34px;
-  height: 34px;
+@keyframes svg-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* ── Detail panel ── */
@@ -188,14 +154,9 @@
     align-items: center;
   }
 
-  .orbitArea {
+  .orbitSvg {
     width: 360px;
     height: 360px;
-  }
-
-  .orbitInner {
-    transform: scale(0.75);
-    transform-origin: top left;
   }
 
   .panel {
@@ -214,22 +175,14 @@
     font-size: 28px;
   }
 
-  .orbitArea {
+  .orbitSvg {
     width: 300px;
     height: 300px;
-  }
-
-  .orbitInner {
-    transform: scale(0.625);
-    transform-origin: top left;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbitDotWrap {
-    animation: none;
-  }
-
+  .orbitGroup,
   .ringsGroup {
     animation: none;
   }
