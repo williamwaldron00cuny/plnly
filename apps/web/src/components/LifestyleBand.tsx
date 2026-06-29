@@ -3,18 +3,27 @@ import styles from "./LifestyleBand.module.css";
 
 export function LifestyleBand() {
   return (
-    <section className={styles.section} aria-hidden>
-      <div className={styles.imageWrap}>
+    <div className={styles.split} aria-hidden>
+      <div className={styles.half}>
+        <Image
+          src="/photos/loft-workspace.jpg"
+          alt=""
+          fill
+          sizes="50vw"
+          style={{ objectFit: "cover" }}
+          className={styles.image}
+        />
+      </div>
+      <div className={styles.half}>
         <Image
           src="/photos/nyc-courtyard.jpg"
           alt=""
           fill
-          sizes="100vw"
+          sizes="50vw"
           style={{ objectFit: "cover", objectPosition: "center 55%" }}
           className={styles.image}
         />
       </div>
-      <div className={styles.scrim} />
-    </section>
+    </div>
   );
 }

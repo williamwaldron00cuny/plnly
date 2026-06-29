@@ -18,8 +18,8 @@ export function Marquee() {
       <div className={styles.track}>
         {track.map((item, i) => (
           <span className={styles.item} key={`${item}-${i}`}>
+            <span className={styles.chevron}>›</span>
             {item}
-            <span className={styles.dot} />
           </span>
         ))}
       </div>

@@ -54,7 +54,7 @@ export function WhoFor() {
                   alt="A golden retriever resting under a clean home office desk"
                   fill
                   sizes="(max-width: 760px) 100vw, 50vw"
-                  style={{ objectFit: "cover", objectPosition: "center 30%" }}
+                  style={{ objectFit: "cover", objectPosition: "center 65%" }}
                 />
               </div>
               <div style={{ padding: 40 }}>

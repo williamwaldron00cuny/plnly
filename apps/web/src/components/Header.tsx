@@ -33,7 +33,10 @@ export function Header({ onBook }: { onBook: () => void }) {
           gap: 12,
         }}
       >
-        <Wordmark variant="horizontal" size="sm" />
+        <span style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <Wordmark variant="compact" size="sm" onInk />
+          <Wordmark variant="horizontal" size="sm" />
+        </span>
         <nav style={{ display: "flex", alignItems: "center", gap: 32 }}>
           <a href="#service" style={navLinkStyle} className={styles.navLink}>
             The service

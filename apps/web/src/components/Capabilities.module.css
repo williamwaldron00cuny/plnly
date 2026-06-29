@@ -6,102 +6,202 @@
   font-size: 38px;
 }
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--plnly-radius-card-lg);
-  background: var(--plnly-porcelain);
-  min-height: 248px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: transform var(--plnly-dur-standard) var(--plnly-ease),
-    box-shadow var(--plnly-dur-standard) var(--plnly-ease);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--plnly-shadow-floating);
-}
-
-.card:hover .cardBg {
-  opacity: 0.2;
-}
-
-.card[data-col="span 2"] {
-  grid-column: span 2;
-}
-
-.card[data-col="span 3"] {
-  grid-column: span 3;
-}
-
-.cardBg {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 380ms var(--plnly-ease);
-}
-
-.cardBg img {
-  object-fit: cover;
-  filter: blur(2px);
-  transform: scale(1.06);
-}
-
-.cardContent {
-  position: relative;
-  z-index: 1;
-  padding: 24px 28px 28px;
-}
-
-.cardName {
-  font-family: var(--plnly-font-display);
-  font-weight: 500;
-  font-size: 20px;
-  color: var(--plnly-ink);
-  margin-top: 12px;
-}
-
-.toolList {
-  margin-top: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.tool {
+/* ── Orbit layout ── */
+.orbitLayout {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--plnly-font-body);
-  font-size: 13.5px;
-  color: var(--plnly-ink-65);
-  line-height: 1.4;
+  gap: 64px;
+  margin-top: 56px;
 }
 
-.toolDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--plnly-coral);
+.orbitArea {
+  position: relative;
+  width: 480px;
+  height: 480px;
   flex-shrink: 0;
 }
 
-@media (max-width: 900px) {
-  .bento {
-    grid-template-columns: repeat(2, 1fr);
+/* Inner container stays at 480×480 in DOM; scaled down on small viewports */
+.orbitInner {
+  position: absolute;
+  inset: 0;
+  width: 480px;
+  height: 480px;
+}
+
+.orbitSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ringsGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: caps-breathe 9s ease-in-out infinite alternate;
+}
+
+@keyframes caps-breathe {
+  from { transform: scale(1); }
+  to { transform: scale(1.035); }
+}
+
+/* Zero-size pivot at orbit center — rotates to carry the dot around */
+.orbitDotWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  animation: caps-orbit var(--dur, 60s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes caps-orbit {
+  to { transform: rotate(360deg); }
+}
+
+/* The colored planet dot — sits at radius --r from orbit center */
+.orbitDot {
+  position: absolute;
+  top: 0;
+  left: var(--r, 208px);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color, #9FB1BB);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: width 0.25s var(--plnly-ease),
+              height 0.25s var(--plnly-ease),
+              box-shadow 0.25s var(--plnly-ease);
+}
+
+.orbitDotActive {
+  width: 34px;
+  height: 34px;
+}
+
+/* ── Detail panel ── */
+.panel {
+  flex: 1;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panelContent {
+  animation: panel-in 0.22s var(--plnly-ease) forwards;
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.panelIcon {
+  margin-bottom: 16px;
+}
+
+.panelName {
+  font-family: var(--plnly-font-display);
+  font-weight: 500;
+  font-size: 34px;
+  letter-spacing: -0.015em;
+  color: var(--plnly-ink);
+  margin-bottom: 28px;
+}
+
+.panelTools {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.panelTool {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--plnly-font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--plnly-ink-65);
+}
+
+.panelDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.panelPrompt {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-family: var(--plnly-font-body);
+  font-size: 15px;
+  color: var(--plnly-ink-55);
+}
+
+.panelHint {
+  font-family: var(--plnly-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--plnly-ink-35);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .orbitLayout {
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
   }
 
-  .card[data-col="span 2"],
-  .card[data-col="span 3"] {
-    grid-column: span 2;
+  .orbitArea {
+    width: 360px;
+    height: 360px;
+  }
+
+  .orbitInner {
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 480px;
+    min-height: 200px;
   }
 }
 
@@ -114,13 +214,23 @@
     font-size: 28px;
   }
 
-  .bento {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .orbitArea {
+    width: 300px;
+    height: 300px;
   }
 
-  .card[data-col="span 2"],
-  .card[data-col="span 3"] {
-    grid-column: span 1;
+  .orbitInner {
+    transform: scale(0.625);
+    transform-origin: top left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitDotWrap {
+    animation: none;
+  }
+
+  .ringsGroup {
+    animation: none;
   }
 }

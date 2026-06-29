@@ -59,7 +59,7 @@ export function Service() {
                 onClick={() => setExpanded(open ? null : i)}
                 aria-expanded={open}
               >
-                <Icon name={s.icon} size={38} coral={s.coral} />
+                <Icon name={s.icon} size={52} coral={s.coral} />
                 <div
                   style={{
                     fontFamily: "var(--plnly-font-display)",
