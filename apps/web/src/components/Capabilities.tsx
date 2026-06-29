@@ -11,7 +11,7 @@ const CATEGORIES: {
   icon: IconName;
   tools: string[];
   color: string;
-  radiusPx: number;
+  ringR: number;
   startDeg: number;
   durationS: number;
 }[] = [
@@ -20,7 +20,7 @@ const CATEGORIES: {
     icon: "time",
     tools: ["Shared calendars", "Reminders that read context", "Meeting & appointment triage"],
     color: "#E25E3A",
-    radiusPx: 208,
+    ringR: 104,
     startDeg: 0,
     durationS: 72,
   },
@@ -28,8 +28,8 @@ const CATEGORIES: {
     name: "Smart home",
     icon: "ring",
     tools: ["Unified control hub", "Routines & automations", "Guest & sitter access"],
-    color: "#9FB1BB",
-    radiusPx: 144,
+    color: "#4A7FA0",
+    ringR: 72,
     startDeg: 72,
     durationS: 52,
   },
@@ -37,8 +37,8 @@ const CATEGORIES: {
     name: "Travel",
     icon: "place",
     tools: ["Itinerary consolidation", "Packing & document checklists", "Real-time change alerts"],
-    color: "#C2D8CC",
-    radiusPx: 208,
+    color: "#2F8B6E",
+    ringR: 104,
     startDeg: 144,
     durationS: 88,
   },
@@ -46,8 +46,8 @@ const CATEGORIES: {
     name: "AI literacy",
     icon: "focus",
     tools: ["NotebookLM workflows", "Citation & source checking", "Scoped, not subject tutoring"],
-    color: "#A8C4A0",
-    radiusPx: 144,
+    color: "#6B5B9E",
+    ringR: 72,
     startDeg: 216,
     durationS: 60,
   },
@@ -55,8 +55,8 @@ const CATEGORIES: {
     name: "Household admin",
     icon: "plan",
     tools: ["Subscription & bill tracking", "Grocery & restock automation", "Shared task ownership"],
-    color: "#C4B09A",
-    radiusPx: 208,
+    color: "#8B6F45",
+    ringR: 104,
     startDeg: 288,
     durationS: 80,
   },
@@ -85,57 +85,67 @@ export function Capabilities() {
           Five corners of your life. <em style={italicCoral}>Hover to explore.</em>
         </h2>
 
-        <div
-          className={styles.orbitLayout}
-          onMouseLeave={() => setActive(null)}
-        >
-          {/* Orbit diagram */}
-          <div className={styles.orbitArea} aria-hidden>
-            <div className={styles.orbitInner}>
-              <svg viewBox="0 0 240 240" className={styles.orbitSvg} fill="none">
-                <g className={styles.ringsGroup}>
-                  <circle cx="120" cy="120" r="40" stroke="rgba(32,36,43,0.09)" strokeWidth="1" />
-                  <circle cx="120" cy="120" r="72" stroke="rgba(32,36,43,0.07)" strokeWidth="1" />
-                  <circle cx="120" cy="120" r="104" stroke="rgba(32,36,43,0.05)" strokeWidth="1" />
-                </g>
-                <circle cx="120" cy="120" r="6" fill="#E25E3A" fillOpacity="0.45" />
-              </svg>
+        <div className={styles.orbitLayout} onMouseLeave={() => setActive(null)}>
+          {/* SVG orbit — rings + animated dots in one coordinate space */}
+          <svg
+            viewBox="0 0 240 240"
+            className={styles.orbitSvg}
+            fill="none"
+            aria-hidden="true"
+          >
+            {/* Breathing rings */}
+            <g className={styles.ringsGroup}>
+              <circle cx="120" cy="120" r="40" stroke="rgba(32,36,43,0.10)" strokeWidth="1.2" />
+              <circle cx="120" cy="120" r="72" stroke="rgba(32,36,43,0.08)" strokeWidth="1" />
+              <circle cx="120" cy="120" r="104" stroke="rgba(32,36,43,0.06)" strokeWidth="1" />
+            </g>
 
-              {CATEGORIES.map((cat, i) => {
-                const isActive = active === i;
-                const delayS = -((cat.startDeg / 360) * cat.durationS);
-                return (
-                  <div
-                    key={cat.name}
-                    className={styles.orbitDotWrap}
-                    style={{
-                      "--dur": `${cat.durationS}s`,
-                      "--delay": `${delayS}s`,
-                      animationPlayState: isActive ? "paused" : "running",
-                    } as React.CSSProperties}
-                  >
-                    <div
-                      className={`${styles.orbitDot} ${isActive ? styles.orbitDotActive : ""}`}
-                      style={{
-                        "--r": `${cat.radiusPx}px`,
-                        "--color": cat.color,
-                        ...(isActive && {
-                          boxShadow: `0 0 18px 6px ${cat.color}50`,
-                        }),
-                      } as React.CSSProperties}
-                      onMouseEnter={() => setActive(i)}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`Explore ${cat.name}`}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") setActive(i);
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+            {/* Center coral dot */}
+            <circle cx="120" cy="120" r="6" fill="#E25E3A" fillOpacity="0.55" />
+
+            {/* Orbiting category planets */}
+            {CATEGORIES.map((cat, i) => {
+              const isActive = active === i;
+              const rad = (cat.startDeg * Math.PI) / 180;
+              const cx = 120 + cat.ringR * Math.cos(rad);
+              const cy = 120 + cat.ringR * Math.sin(rad);
+
+              return (
+                <g
+                  key={cat.name}
+                  className={styles.orbitGroup}
+                  style={{
+                    "--dur": `${cat.durationS}s`,
+                    animationPlayState: isActive ? "paused" : "running",
+                  } as React.CSSProperties}
+                  onMouseEnter={() => setActive(i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Explore ${cat.name}`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setActive(i);
+                  }}
+                >
+                  {/* Invisible large hit zone — much easier to hover */}
+                  <circle cx={cx} cy={cy} r={18} fill="transparent" />
+                  {/* Visible planet circle */}
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={isActive ? 10 : 7}
+                    fill={cat.color}
+                    stroke="rgba(255,255,255,0.7)"
+                    strokeWidth="1.5"
+                    style={
+                      isActive
+                        ? { filter: `drop-shadow(0 0 6px ${cat.color})` }
+                        : undefined
+                    }
+                  />
+                </g>
+              );
+            })}
+          </svg>
 
           {/* Detail panel */}
           <div className={styles.panel}>
