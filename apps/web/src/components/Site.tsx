@@ -48,8 +48,8 @@ export function Site() {
       <Reveal>
         <WhoFor />
       </Reveal>
-      <LifestyleBand />
       <BrooklynBand />
+      <LifestyleBand />
       <Reveal>
         <PlainlyAI />
       </Reveal>

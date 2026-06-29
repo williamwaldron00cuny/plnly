@@ -23,16 +23,17 @@ export function Hero({ onBook }: { onBook: () => void }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
       className={styles.section}
-      style={{ position: "relative", maxWidth: 1120, margin: "0 auto", overflow: "hidden" }}
+      style={{ position: "relative", maxWidth: 1120, margin: "0 auto" }}
     >
       <div
         style={{
           position: "absolute",
-          right: -200,
+          right: -160,
           top: -120,
           pointerEvents: "none",
           transform: `translate(${tilt.x}px, ${tilt.y}px)`,
           transition: "transform 600ms var(--plnly-ease)",
+          willChange: "transform",
         }}
       >
         <Orbit tone="faint" size={760} spin duration={90} breathe breatheDuration={9} />

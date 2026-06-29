@@ -1,33 +1,35 @@
 .wrap {
   overflow: hidden;
   background: var(--plnly-porcelain);
-  padding: 18px 0;
+  padding: 16px 0;
 }
 
 .track {
   display: flex;
   width: max-content;
-  animation: plnly-marquee 32s linear infinite;
+  animation: plnly-marquee 36s linear infinite;
 }
 
 .item {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   font-family: var(--plnly-font-mono);
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--plnly-ink-45);
+  color: var(--plnly-ink-55);
   white-space: nowrap;
-  padding: 0 28px;
+  padding: 0 20px;
 }
 
-.dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--plnly-coral);
-  margin-left: 28px;
+.chevron {
+  font-family: var(--plnly-font-display);
+  font-size: 16px;
+  color: var(--plnly-coral);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 @keyframes plnly-marquee {
