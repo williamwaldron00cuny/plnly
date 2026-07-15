@@ -1,13 +1,15 @@
 /* ============================================================
    PLNLY · Typography
-   Four voices, each used once per composition.
-   Outfit · Newsreader italic · Hanken Grotesk · IBM Plex Mono
+   Three voices, each used once per composition.
+   Outfit (single sans) · Newsreader italic · IBM Plex Mono
+   Locked July 15, 2026: Outfit is the single sans — headlines and body.
+   Hanken Grotesk is retired; do not reintroduce it.
    ============================================================ */
 :root {
   /* --- Families --- */
   --plnly-font-display: 'Outfit', 'Helvetica Neue', Arial, sans-serif;        /* display, headlines, wordmark */
   --plnly-font-serif:   'Newsreader', Georgia, 'Times New Roman', serif;      /* the one elevated word (italic) */
-  --plnly-font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif; /* body & interface workhorse */
+  --plnly-font-body:    'Outfit', 'Helvetica Neue', Arial, sans-serif;        /* body & interface workhorse */
   --plnly-font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace; /* labels, data, stamp */
 
   /* --- Weights --- */
@@ -43,7 +45,7 @@
   --plnly-h2-ls:      -0.01em;   /* @kind other */
   --plnly-h3-ls:      0;         /* @kind other */
   --plnly-caption-ls: 0.16em;    /* @kind other */
-  --plnly-wordmark-ls: 0.045em;  /* @kind other */  /* PLNLY uppercase    */
+  --plnly-wordmark-ls: 0.1em;    /* @kind other */  /* PLNLY uppercase, v1.1 (was 0.045em) */
   --plnly-reveal-ls:   0.16em;   /* @kind other */  /* plainly italic     */
   --plnly-label-ls:    0.16em;   /* @kind other */  /* mono caps eyebrows */
 

@@ -1,0 +1,24 @@
+.section {
+  background: var(--plnly-ink-2);
+  padding: 128px 40px;
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  font-size: 38px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 80px 20px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+}

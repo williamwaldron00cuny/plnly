@@ -1,5 +1,5 @@
 .section {
-  padding: 104px 40px;
+  padding: 0;
 }
 
 .heading {
@@ -11,8 +11,8 @@
   height: 620px;
   border-radius: var(--plnly-radius-card-lg);
   overflow: hidden;
-  background: var(--plnly-surface);
-  box-shadow: var(--plnly-shadow-raised);
+  background: var(--plnly-ink-2);
+  border: 1px solid var(--plnly-border-on-ink);
 }
 
 @media (max-width: 760px) {

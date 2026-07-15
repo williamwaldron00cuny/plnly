@@ -1,31 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
-import Cal, { getCalApi } from "@calcom/embed-react";
+import Cal from "@calcom/embed-react";
 import { Eyebrow } from "@plnly/ui";
+import { CAL_LINK } from "./CalInit";
 import styles from "./Booking.module.css";
 
-const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK || "plnly/intro-call";
-
 export function Booking() {
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi();
-      cal("ui", {
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#E25E3A" },
-          dark: { "cal-brand": "#E25E3A" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
-    <section id="booking" style={{ background: "var(--plnly-porcelain)" }}>
+    <section id="booking" style={{ background: "var(--plnly-ink-2)" }}>
       <div className={styles.section} style={{ maxWidth: 1120, margin: "0 auto" }}>
-        <Eyebrow>Pick a time</Eyebrow>
+        <Eyebrow onInk>Pick a time</Eyebrow>
         <h2
           className={styles.heading}
           style={{
@@ -33,7 +17,7 @@ export function Booking() {
             fontWeight: 500,
             lineHeight: 1.12,
             letterSpacing: "-0.015em",
-            color: "var(--plnly-ink)",
+            color: "var(--plnly-cloud)",
             margin: "18px 0 40px",
             maxWidth: "20ch",
           }}
@@ -44,7 +28,7 @@ export function Booking() {
           <Cal
             calLink={CAL_LINK}
             style={{ width: "100%", height: "100%", overflow: "scroll" }}
-            config={{ layout: "month_view" }}
+            config={{ layout: "month_view", theme: "dark" }}
           />
         </div>
       </div>

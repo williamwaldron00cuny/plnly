@@ -32,7 +32,7 @@
   --plnly-shadow-raised:   0 1px 3px rgba(0, 0, 0, 0.06);
   --plnly-shadow-floating: 0 4px 14px rgba(32, 36, 43, 0.12);
   --plnly-shadow-overlay:  0 12px 34px rgba(32, 36, 43, 0.18);
-  --plnly-shadow-accent:   0 6px 20px rgba(226, 94, 58, 0.22); /* coral glow (favicon/CTA) */
+  --plnly-shadow-accent:   0 6px 20px rgba(255, 61, 0, 0.25); /* coral glow — kept signature, dial back if neon */
 
   /* --- Motion · arrive, don't perform --- */
   --plnly-ease:          cubic-bezier(0.22, 0.61, 0.36, 1);  /* @kind other */  /* ease-out, no overshoot */

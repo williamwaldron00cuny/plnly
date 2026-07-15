@@ -1,27 +1,31 @@
 import React from 'react';
+import styles from './Wordmark.module.css';
 
 export type WordmarkVariant = 'stacked' | 'horizontal' | 'compact';
-export type WordmarkSize = 'sm' | 'md' | 'lg';
+export type WordmarkSize = 'sm' | 'md' | 'lg' | 'hero';
 
 export interface WordmarkProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** Lockup form. "stacked" is primary; "compact" is the P. disc for small sizes. @default "stacked" */
+  /** Lockup form. "stacked"/"horizontal" render the one current lockup. "compact" is the favicon-style badge for small sizes. @default "stacked" */
   variant?: WordmarkVariant;
-  /** @default "md" */
+  /** "hero" scales responsively (80px → 140px) to match logo-dark.svg at display size. @default "md" */
   size?: WordmarkSize;
   /** Render reversed for dark surfaces. @default false */
   onInk?: boolean;
   /** PL·AI·NLY — the AI-literacy sub-brand lockup. @default false */
   subBrand?: boolean;
-  /** Show the "plainly" reveal + divider. Drop only below min size / repeat contact. @default true */
+  /** Show the "plainly" reveal + dash/dot. Drop only below min size / repeat contact — it's absolutely positioned and can overlap tight nav layouts. @default true */
   reveal?: boolean;
 }
 
-const SCALE: Record<WordmarkSize, number> = { sm: 0.62, md: 1, lg: 1.5 };
+const FIXED_PX: Record<'sm' | 'md' | 'lg', number> = { sm: 24, md: 38, lg: 57 };
 
 /**
- * The PLNLY / plainly lockup — the core brand mark.
- * The wordmark never appears without "plainly" beneath it on first contact.
- * Outfit Medium uppercase (.045em) over a divider, then Newsreader italic coral (.16em).
+ * The PLNLY / plainly lockup — current mark (Logos_71326, July 2026): a coral
+ * bar floating above-left of the wordmark, PLNLY in Outfit Light tracked
+ * uppercase, a coral dot as the period, and "plainly" in Newsreader italic
+ * tucked into the negative space above-right — grey, never coral. Matches
+ * PLNLY_Hero_Element.html's lockup exactly (the currently-authorized site
+ * geometry); do not reintroduce the earlier inline-row v1.0 layout.
  */
 export function Wordmark({
   variant = 'stacked',
@@ -30,11 +34,11 @@ export function Wordmark({
   subBrand = false,
   reveal = true,
   style,
+  className,
   ...rest
 }: WordmarkProps) {
-  const scale = SCALE[size] ?? 1;
   const inkColor = onInk ? 'var(--plnly-on-ink)' : 'var(--plnly-ink)';
-  const dividerColor = onInk ? 'var(--plnly-on-ink)' : 'var(--plnly-ink)';
+  const revealColor = onInk ? 'var(--plnly-reveal-on-ink)' : 'var(--plnly-reveal-on-light)';
 
   const mark = subBrand ? (
     <>
@@ -44,95 +48,136 @@ export function Wordmark({
     'PLNLY'
   );
 
-  const wordmarkEl = (markSize: number) => (
-    <span
-      style={{
-        fontFamily: 'var(--plnly-font-display)',
-        fontWeight: 'var(--plnly-weight-medium)',
-        fontSize: markSize,
-        letterSpacing: 'var(--plnly-wordmark-ls)',
-        paddingLeft: '0.045em',
-        color: inkColor,
-        lineHeight: 1,
-        display: 'block',
-      }}
-    >
-      {mark}
-    </span>
-  );
-
-  const revealEl = (revealSize: number, ls: string = 'var(--plnly-reveal-ls)') => (
-    <span
-      style={{
-        fontFamily: 'var(--plnly-font-serif)',
-        fontStyle: 'italic',
-        fontWeight: 'var(--plnly-weight-regular)',
-        fontSize: revealSize,
-        letterSpacing: ls,
-        paddingLeft: ls === 'none' ? 0 : '0.16em',
-        color: 'var(--plnly-coral)',
-        lineHeight: 1,
-      }}
-    >
-      plainly
-    </span>
-  );
-
   if (variant === 'compact') {
+    const scaleMap: Record<WordmarkSize, number> = { sm: 0.62, md: 1, lg: 1.5, hero: 2.2 };
+    const scale = scaleMap[size] ?? 1;
     const d = 96 * scale;
     return (
       <span
         style={{
+          position: 'relative',
           width: d,
           height: d,
-          borderRadius: '50%',
-          background: onInk ? 'var(--plnly-coral)' : 'var(--plnly-ink)',
+          borderRadius: d * 0.23,
+          overflow: 'hidden',
+          background: onInk ? 'var(--plnly-ink)' : 'var(--plnly-porcelain)',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexShrink: 0,
           ...style,
         }}
+        className={className}
         {...rest}
       >
         <span
           style={{
+            position: 'absolute',
+            left: -d * 0.04,
+            top: d * 0.39,
+            width: d * 0.234,
+            height: d * 0.031,
+            background: 'var(--plnly-coral)',
+          }}
+        />
+        <span
+          style={{
+            position: 'absolute',
+            left: d * 0.84,
+            top: d * 0.78,
+            width: d * 0.0625,
+            height: d * 0.0625,
+            borderRadius: '50%',
+            background: 'var(--plnly-coral)',
+          }}
+        />
+        <span
+          style={{
             fontFamily: 'var(--plnly-font-display)',
-            fontWeight: 500,
-            fontSize: d * 0.48,
-            color: onInk ? 'var(--plnly-cream)' : 'var(--plnly-porcelain)',
+            fontWeight: 'var(--plnly-weight-light)',
+            fontSize: d * 0.56,
+            color: onInk ? 'var(--plnly-on-ink)' : 'var(--plnly-ink)',
+            lineHeight: 1,
           }}
         >
-          P<span style={{ color: onInk ? 'var(--plnly-ink)' : 'var(--plnly-coral)' }}>.</span>
+          P
         </span>
       </span>
     );
   }
 
-  if (variant === 'horizontal') {
-    return (
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 16 * scale, ...style }} {...rest}>
-        {wordmarkEl(38 * scale)}
-        {reveal && (
-          <>
-            <span style={{ width: 1, height: 34 * scale, background: dividerColor, opacity: 0.35 }} />
-            {revealEl(22 * scale, 'none')}
-          </>
-        )}
-      </span>
-    );
-  }
+  // "stacked"/"horizontal" — one lockup shape. Every offset below is in `em`
+  // against the wrapper's own font-size, so the whole mark scales as one unit.
+  const isHero = size === 'hero';
+  const wmFontSize = isHero ? 'var(--plnly-wm-size)' : `${FIXED_PX[size as 'sm' | 'md' | 'lg'] ?? FIXED_PX.md}px`;
 
   return (
     <span
-      style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', ...style }}
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        fontSize: wmFontSize,
+        lineHeight: 1,
+        ...style,
+      }}
+      className={[isHero ? styles.hero : '', className].filter(Boolean).join(' ') || undefined}
       {...rest}
     >
-      {wordmarkEl(58 * scale)}
+      {/* The floating dash — tucked just outside the wordmark's top-left corner */}
+      <span
+        aria-hidden
+        style={{
+          position: 'absolute',
+          top: '-0.14em',
+          left: '-0.14em',
+          width: '0.43em',
+          height: '0.057em',
+          background: 'var(--plnly-coral-2)',
+        }}
+      />
+      <span style={{ display: 'inline-flex', alignItems: 'baseline' }}>
+        <span
+          style={{
+            fontFamily: 'var(--plnly-font-display)',
+            fontWeight: 'var(--plnly-weight-light)',
+            fontSize: '1em',
+            letterSpacing: 'var(--plnly-wordmark-ls)',
+            paddingLeft: '0.1em',
+            color: inkColor,
+          }}
+        >
+          {mark}
+        </span>
+        {/* The dot — the period */}
+        <span
+          aria-hidden
+          style={{
+            width: '0.1em',
+            height: '0.1em',
+            borderRadius: '50%',
+            background: 'var(--plnly-coral-2)',
+            marginLeft: '0.11em',
+            flexShrink: 0,
+          }}
+        />
+      </span>
+      {/* "plainly" — the reveal, tucked into the negative space above-right. Never coral. */}
       {reveal && (
-        <>
-          <span style={{ width: 30 * scale, height: 1, background: dividerColor, opacity: 0.45, margin: `${9 * scale}px 0` }} />
-          {revealEl(19 * scale)}
-        </>
+        <span
+          style={{
+            position: 'absolute',
+            top: '-0.32em',
+            left: '2.2em',
+            fontFamily: 'var(--plnly-font-serif)',
+            fontStyle: 'italic',
+            fontWeight: 'var(--plnly-weight-regular)',
+            fontSize: '0.33em',
+            color: revealColor,
+            whiteSpace: 'nowrap',
+          }}
+        >
+          plainly
+        </span>
       )}
     </span>
   );

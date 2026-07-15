@@ -1,5 +1,6 @@
-/* PLNLY webfonts — the four voices.
-   Outfit (display/headline/wordmark), Newsreader italic (the elevated word/reveal),
-   Hanken Grotesk (body/interface workhorse), IBM Plex Mono (labels/data/stamp).
-   All four are Google Fonts; loaded here so consumers get them from one import. */
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&display=swap');
+/* PLNLY webfonts — the three voices.
+   Outfit (the single sans — display, headline, body, wordmark), Newsreader italic
+   (the elevated word/reveal), IBM Plex Mono (labels/data/stamp).
+   All three are Google Fonts; loaded here so consumers get them from one import.
+   Hanken Grotesk is retired (locked July 15, 2026) — do not reintroduce it. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&display=swap');

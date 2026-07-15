@@ -1,55 +1,29 @@
-import type { CSSProperties } from "react";
-import { Wordmark, Button } from "@plnly/ui";
+import Link from "next/link";
+import { Wordmark } from "@plnly/ui";
+import { BookButton } from "./BookButton";
 import styles from "./Header.module.css";
 
-const navLinkStyle: CSSProperties = {
-  fontFamily: "var(--plnly-font-body)",
-  fontSize: 14,
-  color: "var(--plnly-ink-65)",
-  textDecoration: "none",
-};
+const NAV = [
+  { label: "Services", href: "/#services-orbit" },
+  { label: "Packages", href: "/#packages" },
+  { label: "Travel", href: "/travel" },
+  { label: "About", href: "/about" },
+];
 
-export function Header({ onBook }: { onBook: () => void }) {
+export function Header() {
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 20,
-        background: "rgba(227,225,218,0.82)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid var(--plnly-border)",
-      }}
-    >
-      <div
-        className={styles.bar}
-        style={{
-          maxWidth: 1120,
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 12,
-        }}
-      >
-        <span style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <Wordmark variant="compact" size="sm" onInk />
-          <Wordmark variant="horizontal" size="sm" />
-        </span>
-        <nav style={{ display: "flex", alignItems: "center", gap: 32 }}>
-          <a href="#service" style={navLinkStyle} className={styles.navLink}>
-            The service
-          </a>
-          <a href="#who" style={navLinkStyle} className={styles.navLink}>
-            {"Who it's for"}
-          </a>
-          <a href="#booking" style={navLinkStyle} className={styles.navLink}>
-            Book a call
-          </a>
-          <Button size="sm" onClick={onBook}>
-            Start the setup
-          </Button>
+    <header className={styles.header}>
+      <div className={styles.bar}>
+        <Link href="/" aria-label="PLNLY home" style={{ display: "inline-flex" }}>
+          <Wordmark size="sm" onInk reveal={false} />
+        </Link>
+        <nav className={styles.nav}>
+          {NAV.map((item) => (
+            <Link key={item.label} href={item.href} className={styles.navLink}>
+              {item.label}
+            </Link>
+          ))}
+          <BookButton size="sm" />
         </nav>
       </div>
     </header>

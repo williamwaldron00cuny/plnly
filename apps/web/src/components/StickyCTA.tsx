@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@plnly/ui";
+import { BookButton } from "./BookButton";
 import styles from "./StickyCTA.module.css";
 
-export function StickyCTA({ onBook }: { onBook: () => void }) {
+export function StickyCTA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -16,9 +16,7 @@ export function StickyCTA({ onBook }: { onBook: () => void }) {
 
   return (
     <div className={styles.wrap} data-visible={visible}>
-      <Button onClick={onBook} size="md">
-        Start the setup
-      </Button>
+      <BookButton size="md" />
     </div>
   );
 }

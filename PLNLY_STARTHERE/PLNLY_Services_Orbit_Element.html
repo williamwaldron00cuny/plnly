@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLNLY - The Living Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #06080A; /* Ultra Navy */
+            color: #F0F2F5; /* Porcelain */
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-serif-italic {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+        
+        /* Smooth transitions for the scroll text */
+        .service-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .service-text.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         GLOBAL 2D CANVAS BACKGROUND
+         ========================================== -->
+    <canvas id="orbit-canvas" class="fixed inset-0 z-0 w-full h-full pointer-events-none"></canvas>
+
+    <!-- ==========================================
+         SECTION 1: THE HERO 
+         ========================================== -->
+    <section class="relative w-full h-screen">
+        
+        <!-- Top Navigation -->
+        <nav class="absolute top-0 left-0 w-full p-8 z-20 flex justify-between items-center pointer-events-none">
+            <div class="text-[#F0F2F5] text-sm tracking-[0.2em] uppercase font-light">PLNLY</div>
+            <div class="flex space-x-8 text-sm text-gray-400 font-light">
+                <span class="hover:text-[#F0F2F5] pointer-events-auto cursor-pointer transition-colors">Services</span>
+                <span class="hover:text-[#F0F2F5] pointer-events-auto cursor-pointer transition-colors">Packages</span>
+                <span class="hover:text-[#F0F2F5] pointer-events-auto cursor-pointer transition-colors">Travel</span>
+                <span class="hover:text-[#F0F2F5] pointer-events-auto cursor-pointer transition-colors">About</span>
+                <span class="text-[#FF3D00] pointer-events-auto cursor-pointer">Book a First Look</span>
+            </div>
+        </nav>
+
+        <!-- UI Overlay: Primary Brand Lockup -->
+        <div class="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-24 pointer-events-none">
+            
+            <!-- Logo Lockup -->
+            <div class="relative w-fit transform scale-75 md:scale-100 origin-left">
+                <!-- The Floating A Bar -->
+                <div class="absolute w-[40px] md:w-[60px] h-[6px] md:h-[8px] bg-[#FF3D00] -top-[10px] md:-top-[20px] -left-[10px] md:-left-[20px]"></div>
+                
+                <!-- PLNLY Base -->
+                <h1 class="text-[80px] md:text-[140px] font-[300] tracking-[8px] md:tracking-[16px] text-[#F0F2F5] leading-none flex items-baseline">
+                    PLNLY
+                    <!-- The Period -->
+                    <div class="w-[8px] h-[8px] md:w-[14px] md:h-[14px] rounded-full bg-[#FF3D00] ml-2 md:ml-4 mb-2 md:mb-4 shadow-[0_0_15px_rgba(255,61,0,0.4)]"></div>
+                </h1>
+                
+                <!-- plainly italic -->
+                <div class="absolute top-[-30px] md:top-[-45px] left-[180px] md:left-[310px] text-[32px] md:text-[46px] font-serif-italic text-gray-500">
+                    plainly
+                </div>
+            </div>
+
+            <!-- Hero Copy -->
+            <div class="mt-8 md:mt-12 max-w-xl relative">
+                <div class="w-[1px] h-12 bg-[#FF3D00] absolute -left-6 top-2"></div>
+                <p class="text-xl md:text-2xl font-light text-gray-400 leading-relaxed">
+                    We set up the AI. You run the house. <br>
+                    <span class="text-[#F0F2F5]">Built bespoke. Yours to run.</span>
+                </p>
+                <button class="mt-8 px-8 py-3 border border-gray-800 hover:border-[#FF3D00] text-sm tracking-wider uppercase transition-all duration-300 pointer-events-auto text-[#F0F2F5] bg-[#0B0E14]/50 backdrop-blur-sm hover:bg-[#FF3D00] hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]">
+                    Book a First Look
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: SCROLL ORBIT (SERVICES)
+         ========================================== -->
+    <section id="scroll-section" class="relative w-full h-[300vh]">
+        
+        <!-- Sticky Container -->
+        <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center">
+
+            <!-- Services Content Overlay -->
+            <!-- Aligned to the left to balance the bottom-right focal point of the canvas orbits -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+                
+                <!-- Left Side: Content -->
+                <div class="relative h-[300px] flex items-center">
+                    
+                    <!-- Service 1 -->
+                    <div id="service-0" class="service-text active w-full">
+                        <div class="text-[#FF3D00] text-sm tracking-[0.2em] uppercase font-medium mb-4 flex items-center">
+                            <span class="w-8 h-[1px] bg-[#FF3D00] mr-4 shadow-[0_0_10px_rgba(255,61,0,0.4)]"></span> 01 / Setup
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-light mb-6">Set up around you.</h2>
+                        <p class="text-lg text-gray-400 font-light leading-relaxed">
+                            We build the AI around your household as it actually is — your calendar, your family, your routines — not a one-size-fits-all install.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div id="service-1" class="service-text w-full">
+                        <div class="text-[#FF3D00] text-sm tracking-[0.2em] uppercase font-medium mb-4 flex items-center">
+                            <span class="w-8 h-[1px] bg-[#FF3D00] mr-4 shadow-[0_0_10px_rgba(255,61,0,0.4)]"></span> 02 / Teaching
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-light mb-6">Taught, not done for you.</h2>
+                        <p class="text-lg text-gray-400 font-light leading-relaxed">
+                            Every session is hands-on. You and the people you live with learn the systems as we build them — real, working literacy, including responsible AI use for college-bound teens.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div id="service-2" class="service-text w-full">
+                        <div class="text-[#FF3D00] text-sm tracking-[0.2em] uppercase font-medium mb-4 flex items-center">
+                            <span class="w-8 h-[1px] bg-[#FF3D00] mr-4 shadow-[0_0_10px_rgba(255,61,0,0.4)]"></span> 03 / Ownership
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-light mb-6">Then it's yours.</h2>
+                        <p class="text-lg text-gray-400 font-light leading-relaxed">
+                            No dependency, no standing arrangement required. You walk away able to run, adjust, and extend what we built — and can keep it sharp with In Residence.
+                        </p>
+                    </div>
+
+                </div>
+                
+                <!-- Right spacer -->
+                <div class="hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Space -->
+    <section class="relative z-10 h-[50vh] bg-[#06080A] flex flex-col items-center justify-center border-t border-gray-900 mt-24">
+        <p class="text-gray-500 font-serif-italic text-2xl mb-4">plainly</p>
+        <p class="text-sm tracking-[0.2em] uppercase text-gray-600">Built Bespoke. Yours to run.</p>
+    </section>
+
+    <!-- ==========================================
+         CANVAS ANIMATION ENGINE
+         ========================================== -->
+    <script>
+        const canvas = document.getElementById('orbit-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, dpr;
+        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+        let time = 0;
+
+        // Scroll Tracking
+        const scrollSection = document.getElementById('scroll-section');
+        let scrollProgress = 0;
+        let targetScrollAngle = 0;
+        let currentScrollAngle = 0;
+        let activeIndex = 0;
+
+        // Base Configuration for the Blueprint
+        const tiltAngle = Math.PI / 5.5;
+        // The angle at which a node aligns perfectly with the text on the left side of the screen
+        const targetFocusAngle = 3.6; 
+
+        // Define the multiple elliptical rings
+        // Inner 3 rings carry the service nodes. Outer rings provide architectural depth.
+        const orbits = [
+            // rx/ry = size | baseNodeAngle = starting position to ensure it hits focus at the right scroll depth
+            { rx: 550, ry: 240, baseNodeAngle: targetFocusAngle + (0.16 * Math.PI * 2), hasNode: true, activeWeight: 0 },
+            { rx: 850, ry: 370, baseNodeAngle: targetFocusAngle + (0.50 * Math.PI * 2), hasNode: true, activeWeight: 0 },
+            { rx: 1150, ry: 500, baseNodeAngle: targetFocusAngle + (0.83 * Math.PI * 2), hasNode: true, activeWeight: 0 },
+            { rx: 1450, ry: 630, hasNode: false }, 
+            { rx: 1900, ry: 820, hasNode: false }  
+        ];
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            dpr = window.devicePixelRatio || 1;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Subtle Mouse Parallax
+        document.addEventListener('mousemove', (e) => {
+            targetX = (e.clientX - width / 2) * 0.04;
+            targetY = (e.clientY - height / 2) * 0.04;
+        });
+
+        // Track Scroll Progress for the Services Section
+        function updateScroll() {
+            const rect = scrollSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                const maxScroll = rect.height - windowHeight;
+                let rawProgress = Math.max(0, Math.min(1, Math.abs(rect.top) / maxScroll));
+                if(rect.top > 0) rawProgress = 0;
+                
+                scrollProgress = rawProgress;
+            }
+
+            // Determine active index based on scroll depth
+            let newIndex = 0;
+            if (scrollProgress > 0.33 && scrollProgress <= 0.66) newIndex = 1;
+            if (scrollProgress > 0.66) newIndex = 2;
+
+            if (newIndex !== activeIndex) {
+                document.getElementById(`service-${activeIndex}`).classList.remove('active');
+                document.getElementById(`service-${newIndex}`).classList.add('active');
+                activeIndex = newIndex;
+            }
+
+            // Map total scroll progress to 1 full rotation (2PI radians)
+            targetScrollAngle = scrollProgress * Math.PI * 2;
+        }
+
+        window.addEventListener('scroll', updateScroll);
+
+        function render() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Smooth interpolation for parallax and scroll
+            mouseX += (targetX - mouseX) * 0.05;
+            mouseY += (targetY - mouseY) * 0.05;
+            currentScrollAngle += (targetScrollAngle - currentScrollAngle) * 0.06;
+
+            // Anchor the focal point of the system to the bottom right
+            const cx = (width > 768 ? width * 0.85 : width * 0.7) + mouseX;
+            const cy = (height > 768 ? height * 0.85 : height * 0.8) + mouseY;
+
+            // Draw the System
+            orbits.forEach((orbit, i) => {
+                
+                // 1. Draw the faint, persistent architectural rings
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, orbit.rx, orbit.ry, tiltAngle, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(240, 242, 245, 0.03)';
+                ctx.lineWidth = orbit.hasNode ? 1.5 : 0.5; // Make the node tracks slightly thicker
+                ctx.stroke();
+
+                if (orbit.hasNode) {
+                    // Determine if this is the currently focused service planet
+                    // It is active if it's the current index AND we are scrolled into the section
+                    let isTarget = (i === activeIndex && scrollProgress > 0.01);
+                    let targetWeight = isTarget ? 1 : 0;
+                    
+                    // Smoothly animate the glow and highlight
+                    orbit.activeWeight += (targetWeight - orbit.activeWeight) * 0.1;
+
+                    // Calculate the node's current angle on the ellipse
+                    // It decreases as we scroll, meaning the planets sweep clockwise up the left side
+                    let currentAngle = orbit.baseNodeAngle - currentScrollAngle + (time * 0.0002);
+
+                    // 2. The Sweeping Highlight (Replaces Spokes)
+                    // This draws a crisp, glowing arc directly over the orbital path
+                    if (orbit.activeWeight > 0.01) {
+                        ctx.beginPath();
+                        // The arc spreads out behind and slightly ahead of the node
+                        let spread = 0.5 + (orbit.activeWeight * 0.3);
+                        ctx.ellipse(cx, cy, orbit.rx, orbit.ry, tiltAngle, currentAngle - spread, currentAngle + spread);
+                        
+                        ctx.strokeStyle = `rgba(255, 61, 0, ${orbit.activeWeight * 0.5})`;
+                        ctx.lineWidth = 1 + (orbit.activeWeight * 2);
+                        
+                        ctx.shadowColor = '#FF3D00';
+                        ctx.shadowBlur = orbit.activeWeight * 15;
+                        ctx.stroke();
+                        ctx.shadowBlur = 0; // reset
+                    }
+
+                    // 3. Calculate exact X/Y coordinates for the node
+                    let dx = orbit.rx * Math.cos(currentAngle);
+                    let dy = orbit.ry * Math.sin(currentAngle);
+                    let nx = cx + dx * Math.cos(tiltAngle) - dy * Math.sin(tiltAngle);
+                    let ny = cy + dx * Math.sin(tiltAngle) + dy * Math.cos(tiltAngle);
+
+                    // 4. Draw the Node (Planet)
+                    ctx.beginPath();
+                    let radius = 3 + (orbit.activeWeight * 5); // Expands when active
+                    ctx.arc(nx, ny, radius, 0, Math.PI * 2);
+                    
+                    // Color transitions from faint Porcelain to Electric Coral
+                    let r = 100 + (orbit.activeWeight * 155);
+                    let g = 110 - (orbit.activeWeight * 49);
+                    let b = 120 - (orbit.activeWeight * 120);
+                    let a = 0.4 + (orbit.activeWeight * 0.6);
+                    
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
+                    
+                    if (orbit.activeWeight > 0.1) {
+                        ctx.shadowColor = '#FF3D00';
+                        ctx.shadowBlur = orbit.activeWeight * 25;
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // reset
+
+                    // Draw a crisp white inner core when fully active
+                    if (orbit.activeWeight > 0.5) {
+                        ctx.beginPath();
+                        ctx.arc(nx, ny, radius * 0.3, 0, Math.PI * 2);
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fill();
+                    }
+                }
+            });
+
+            time++;
+            requestAnimationFrame(render);
+        }
+
+        // Start the engine
+        render();
+
+    </script>
+</body>
+</html>
+

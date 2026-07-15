@@ -1,0 +1,53 @@
+.hero {
+  background: var(--plnly-ink-2);
+  padding: 72px 40px;
+}
+
+.heroInner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.body {
+  background: var(--plnly-bg);
+  padding: 96px 40px 128px;
+}
+
+.bodyInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--plnly-radius-card-lg);
+  overflow: hidden;
+}
+
+.caption {
+  margin-top: 12px;
+}
+
+.paragraph {
+  font-family: var(--plnly-font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--plnly-text-secondary);
+  margin: 0 0 24px;
+}
+
+@media (max-width: 800px) {
+  .bodyInner {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    max-width: 320px;
+  }
+}
