@@ -1,0 +1,11 @@
+/* Hero-scale lockup: responsive 80px → 140px, everything else in the mark
+   is expressed in em against this custom property so it scales as one unit. */
+.hero {
+  --plnly-wm-size: 80px;
+}
+
+@media (min-width: 761px) {
+  .hero {
+    --plnly-wm-size: 140px;
+  }
+}

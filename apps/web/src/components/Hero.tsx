@@ -1,88 +1,56 @@
-"use client";
-
-import { useRef, useState } from "react";
-import { Orbit, Button, Eyebrow } from "@plnly/ui";
-import { italicCoral } from "./shared";
+import { Wordmark, Eyebrow } from "@plnly/ui";
+import { BookButton } from "./BookButton";
 import styles from "./Hero.module.css";
 
-export function Hero({ onBook }: { onBook: () => void }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: px * 24, y: py * 24 });
-  };
-
+export function Hero() {
   return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      className={styles.section}
-      style={{ position: "relative", maxWidth: 1120, margin: "0 auto" }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          right: -160,
-          top: -120,
-          pointerEvents: "none",
-          transform: `translate(${tilt.x}px, ${tilt.y}px)`,
-          transition: "transform 600ms var(--plnly-ease)",
-          willChange: "transform",
-        }}
-      >
-        <Orbit tone="faint" size={760} spin duration={90} breathe breatheDuration={9} />
-      </div>
-      <div style={{ position: "relative", maxWidth: 760 }}>
-        <Eyebrow>Modern life, minus the jargon · Brooklyn, NY</Eyebrow>
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        <Wordmark size="hero" onInk />
+        <Eyebrow onInk className={styles.mnemonic}>
+          AI, plainly.
+        </Eyebrow>
         <h1
           className={styles.heading}
           style={{
             fontFamily: "var(--plnly-font-display)",
             fontWeight: 500,
-            lineHeight: 1.04,
-            letterSpacing: "-0.025em",
-            color: "var(--plnly-ink)",
+            lineHeight: 1.15,
+            letterSpacing: "-0.015em",
+            color: "var(--plnly-on-ink-dim)",
             margin: "26px 0 0",
+            maxWidth: 640,
           }}
         >
-          Built bespoke. <em style={italicCoral}>Yours</em> to run.
+          We set up the AI.{" "}
+          <span style={{ color: "var(--plnly-cloud)" }}>You run the house.</span>
         </h1>
+        <p
+          style={{
+            fontFamily: "var(--plnly-font-display)",
+            fontWeight: 500,
+            fontSize: 22,
+            lineHeight: 1.3,
+            color: "var(--plnly-cloud)",
+            margin: "22px 0 0",
+          }}
+        >
+          Built bespoke. Yours to run.
+        </p>
         <p
           className={styles.lead}
           style={{
             fontFamily: "var(--plnly-font-body)",
-            lineHeight: 1.55,
-            color: "var(--plnly-ink-80)",
-            margin: "30px 0 0",
-            maxWidth: 560,
+            lineHeight: 1.6,
+            color: "var(--plnly-on-ink-dim)",
+            margin: "18px 0 0",
+            maxWidth: 520,
           }}
         >
-          We set the tools of modern life up around how your household actually lives, teach you to
-          run them, and hand over the keys. You own the capability — not a subscription to us.
+          Personal AI systems for your home and life — set up with you, then handed over.
         </p>
-        <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 38, flexWrap: "wrap" }}>
-          <Button size="lg" onClick={onBook}>
-            Start the setup
-          </Button>
-          <a
-            href="#service"
-            style={{
-              fontFamily: "var(--plnly-font-body)",
-              fontSize: 15,
-              color: "var(--plnly-ink)",
-              borderBottom: "1px solid rgba(32,36,43,0.3)",
-              paddingBottom: 2,
-              textDecoration: "none",
-            }}
-          >
-            See how it works
-          </a>
+        <div style={{ marginTop: 40 }}>
+          <BookButton size="lg" />
         </div>
       </div>
     </section>

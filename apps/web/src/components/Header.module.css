@@ -1,9 +1,35 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(6, 8, 10, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--plnly-border-on-ink);
+}
+
 .bar {
+  max-width: 1120px;
+  margin: 0 auto;
   padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 .navLink {
   position: relative;
+  font-family: var(--plnly-font-body);
+  font-size: 14px;
+  color: var(--plnly-on-ink-dim);
+  text-decoration: none;
 }
 
 .navLink::after {
@@ -17,6 +43,10 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--plnly-dur-micro) var(--plnly-ease);
+}
+
+.navLink:hover {
+  color: var(--plnly-cloud);
 }
 
 .navLink:hover::after {

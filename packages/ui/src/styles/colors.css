@@ -33,9 +33,17 @@
   --plnly-eucalyptus:   #5E7468;  /* grounded green        */
   --plnly-mint:         #C2D8CC;  /* fresh, sub-brand tone */
 
-  /* --- The accent · coral, ~2% --- */
-  --plnly-coral:        #E25E3A;  /* the reveal, the dot, one moment */
+  /* --- The accent · Coral 2.0, ~2% --- */
+  /* Locked July 15, 2026: Coral 2.0 is the single site accent (not just the wordmark) — see DESIGN.md §2. */
+  --plnly-coral:        #FF3D00;  /* Coral 2.0 — the dot, one action per view, the wordmark dash+dot */
   --plnly-coral-deep:   #B8492A;  /* text-safe coral on light · hover */
+  --plnly-coral-2:      var(--plnly-coral);  /* alias — kept for existing wordmark references */
+  --plnly-reveal-on-ink:  #6B7280;  /* "plainly" reveal on dark surfaces   */
+  --plnly-reveal-on-light:#888C91;  /* "plainly" reveal on light surfaces */
+
+  /* --- Dark-led site ground (locked July 15, 2026 — DESIGN.md §2) --- */
+  --plnly-ink-2:        #06080A;  /* Ink 2.0 — the site's dark ground (hero/services/footer) */
+  --plnly-cloud:        #F0F2F5;  /* lightest text on Ink 2.0 */
 
   /* --- Functional · UI status, muted to match --- */
   --plnly-success:      #4F7A5E;
@@ -46,22 +54,22 @@
   /* ============================================================
      Semantic aliases — reach for these in product UI.
      ============================================================ */
-  --plnly-bg:                var(--plnly-greige);      /* page ground          */
+  --plnly-bg:                var(--plnly-greige);      /* page ground (light-relief sections) */
   --plnly-bg-raised:         var(--plnly-porcelain);   /* a step up            */
   --plnly-surface:           var(--plnly-white);       /* cards on greige      */
   --plnly-surface-quiet:     var(--plnly-greige);      /* quiet inset card     */
-  --plnly-surface-ink:       var(--plnly-ink);         /* dark surface / bands */
+  --plnly-surface-ink:       var(--plnly-ink-2);       /* dark surface / bands — Ink 2.0 */
 
   --plnly-text:              var(--plnly-ink);         /* primary copy         */
   --plnly-text-secondary:    var(--plnly-ink-65);      /* secondary copy       */
   --plnly-text-muted:        var(--plnly-ink-45);      /* muted copy           */
   --plnly-text-label:        var(--plnly-ink-35);      /* mono eyebrows/labels */
-  --plnly-text-on-ink:       var(--plnly-on-ink);
+  --plnly-text-on-ink:       var(--plnly-cloud);       /* primary copy on Ink 2.0 */
 
   --plnly-accent:            var(--plnly-coral);       /* the dot, the reveal  */
   --plnly-accent-text:       var(--plnly-coral-deep);  /* coral as text/hover  */
 
   --plnly-border:            rgba(32, 36, 43, 0.13);   /* hairline rules       */
   --plnly-border-strong:     rgba(32, 36, 43, 0.22);
-  --plnly-border-on-ink:     rgba(228, 227, 222, 0.14);
+  --plnly-border-on-ink:     rgba(240, 242, 245, 0.1); /* hairline on Ink 2.0  */
 }

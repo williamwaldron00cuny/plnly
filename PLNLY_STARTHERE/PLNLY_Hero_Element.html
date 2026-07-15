@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLNLY - Dynamic Orbit Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,400&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #06080A; /* Ultra Navy */
+            color: #F0F2F5; /* Porcelain */
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Lock scroll for the hero view */
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-serif-italic {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+        #orbit-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none; /* Let clicks pass through to UI */
+        }
+    </style>
+</head>
+<body class="relative w-screen h-screen">
+
+    <!-- The Dynamic Canvas Background -->
+    <canvas id="orbit-canvas"></canvas>
+
+    <!-- Top Navigation (Faux) -->
+    <nav class="absolute top-0 left-0 w-full p-8 z-20 flex justify-between items-center pointer-events-none">
+        <div class="text-[#F0F2F5] text-sm tracking-[0.2em] uppercase font-light">PLNLY</div>
+        <div class="flex space-x-8 text-sm text-gray-400 font-light">
+            <span class="hover:text-white pointer-events-auto cursor-pointer transition-colors">Services</span>
+            <span class="hover:text-white pointer-events-auto cursor-pointer transition-colors">Packages</span>
+            <span class="hover:text-white pointer-events-auto cursor-pointer transition-colors">Travel</span>
+            <span class="hover:text-white pointer-events-auto cursor-pointer transition-colors">About</span>
+            <span class="text-[#FF3D00] pointer-events-auto cursor-pointer">Book a First Look</span>
+        </div>
+    </nav>
+
+    <!-- UI Overlay: Primary Brand Lockup (Concept 3.3) -->
+    <div class="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-24 pointer-events-none">
+        
+        <div class="relative w-fit transform scale-75 md:scale-100 origin-left">
+            <!-- The Floating A Bar -->
+            <div class="absolute w-[40px] md:w-[60px] h-[6px] md:h-[8px] bg-[#FF3D00] -top-[10px] md:-top-[20px] -left-[10px] md:-left-[20px]"></div>
+            
+            <!-- PLNLY Base -->
+            <h1 class="text-[80px] md:text-[140px] font-[300] tracking-[8px] md:tracking-[16px] text-[#F0F2F5] leading-none flex items-baseline">
+                PLNLY
+                <!-- The Period -->
+                <div class="w-[8px] h-[8px] md:w-[14px] md:h-[14px] rounded-full bg-[#FF3D00] ml-2 md:ml-4 mb-2 md:mb-4"></div>
+            </h1>
+            
+            <!-- plainly italic tucked into negative space -->
+            <div class="absolute top-[-30px] md:top-[-45px] left-[180px] md:left-[310px] text-[32px] md:text-[46px] font-serif-italic text-gray-500">
+                plainly
+            </div>
+        </div>
+
+        <!-- Hero Copy -->
+        <div class="mt-8 md:mt-12 max-w-xl relative">
+            <div class="w-[1px] h-12 bg-[#FF3D00] absolute -left-6 top-2 opacity-50"></div>
+            <p class="text-xl md:text-2xl font-light text-gray-400 leading-relaxed">
+                We set up the AI. You run the house. <br>
+                <span class="text-[#F0F2F5]">Built bespoke. Yours to run.</span>
+            </p>
+            <button class="mt-8 px-8 py-3 border border-gray-800 hover:border-[#FF3D00] text-sm tracking-wider uppercase transition-all duration-300 pointer-events-auto text-[#F0F2F5] bg-[#0B0E14]/50 backdrop-blur-sm hover:bg-[#FF3D00] hover:shadow-[0_0_20px_rgba(255,61,0,0.3)]">
+                Book a First Look
+            </button>
+        </div>
+    </div>
+
+    <!-- The Animation Logic -->
+    <script>
+        const canvas = document.getElementById('orbit-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let dpr; // Device Pixel Ratio for retina displays
+
+        // Mouse Parallax tracking
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        // Track time for orbital movement
+        let time = 0;
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            dpr = window.devicePixelRatio || 1;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.scale(dpr, dpr);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Listen for mouse movement across the document
+        document.addEventListener('mousemove', (e) => {
+            targetX = (e.clientX - width / 2) * 0.05;
+            targetY = (e.clientY - height / 2) * 0.05;
+        });
+
+        // Define the orbital system
+        // rx, ry = radii | angle = tilt of the ellipse | speed = orbital velocity | hasNode = does a dot travel on it?
+        const orbits = [
+            { rx: 350, ry: 150, angle: Math.PI / 5.5, speed: 0.0015, hasNode: true, nodeColor: '#6B7280', nodeSize: 2.5, glow: false },
+            { rx: 650, ry: 280, angle: Math.PI / 5.5, speed: -0.0008, hasNode: true, nodeColor: '#FF3D00', nodeSize: 5, glow: true },
+            { rx: 950, ry: 410, angle: Math.PI / 5.5, speed: 0.0005, hasNode: false },
+            { rx: 1300, ry: 580, angle: Math.PI / 5.5, speed: -0.0003, hasNode: true, nodeColor: '#F0F2F5', nodeSize: 2, glow: false },
+            { rx: 1800, ry: 800, angle: Math.PI / 5.5, speed: 0.0002, hasNode: false }
+        ];
+
+        function animate() {
+            // Smoothly interpolate mouse coordinates for silky parallax
+            mouseX += (targetX - mouseX) * 0.05;
+            mouseY += (targetY - mouseY) * 0.05;
+
+            // Clear the frame
+            ctx.clearRect(0, 0, width, height);
+
+            // Anchor the focal point of the system asynchronously to the bottom right
+            // On mobile, keep it slightly more centered to ensure visibility
+            const baseCx = width > 768 ? width * 0.85 : width * 0.5;
+            const baseCy = width > 768 ? height * 0.85 : height * 0.7;
+            
+            const cx = baseCx + mouseX;
+            const cy = baseCy + mouseY;
+
+            // Draw the system
+            orbits.forEach(orbit => {
+                // 1. Draw the orbital ring (The Blueprint)
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, orbit.rx, orbit.ry, orbit.angle, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(240, 242, 245, 0.04)'; // Extremely faint Cool Porcelain
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // 2. Draw the traveling node (The AI in motion)
+                if (orbit.hasNode) {
+                    const nodeAngle = time * orbit.speed;
+                    
+                    // Parametric equation for a point on a rotated ellipse
+                    const dx = orbit.rx * Math.cos(nodeAngle);
+                    const dy = orbit.ry * Math.sin(nodeAngle);
+                    
+                    const x = cx + dx * Math.cos(orbit.angle) - dy * Math.sin(orbit.angle);
+                    const y = cy + dx * Math.sin(orbit.angle) + dy * Math.cos(orbit.angle);
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, orbit.nodeSize, 0, Math.PI * 2);
+                    ctx.fillStyle = orbit.nodeColor;
+                    
+                    if (orbit.glow) {
+                        ctx.shadowColor = orbit.nodeColor;
+                        ctx.shadowBlur = 15;
+                    } else {
+                        ctx.shadowBlur = 0;
+                    }
+                    
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // Reset shadow so rings don't glow
+                }
+            });
+
+            time++;
+            requestAnimationFrame(animate);
+        }
+
+        // Start the engine
+        animate();
+    </script>
+</body>
+</html>

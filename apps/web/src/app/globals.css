@@ -4,7 +4,7 @@
 :root {
   --plnly-font-display: var(--font-outfit), "Outfit", "Helvetica Neue", Arial, sans-serif;
   --plnly-font-serif: var(--font-newsreader), "Newsreader", Georgia, "Times New Roman", serif;
-  --plnly-font-body: var(--font-hanken-grotesk), "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --plnly-font-body: var(--font-outfit), "Outfit", "Helvetica Neue", Arial, sans-serif;
   --plnly-font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit, Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Outfit, Newsreader, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { CalInit } from "@/components/CalInit";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { StickyCTA } from "@/components/StickyCTA";
 import "@plnly/ui/styles.css";
 import "./globals.css";
 
@@ -17,12 +21,6 @@ const newsreader = Newsreader({
   weight: ["300", "400", "500", "600"],
 });
 
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
@@ -32,7 +30,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "PLNLY — Built bespoke. Yours to run.",
   description:
-    "Modern life, minus the jargon. Personal AI setup, teaching, and retainer — Brooklyn, NY, and online.",
+    "Personal AI systems for your home and life — set up with you, then handed over. Brooklyn, NY, and online.",
 };
 
 export default function RootLayout({
@@ -43,10 +41,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${newsreader.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable}`}
+      className={`${outfit.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}
     >
       <body>
+        <div className="plnly-grain" />
+        <CalInit />
+        <Header />
         {children}
+        <Footer />
+        <StickyCTA />
         <Analytics />
       </body>
     </html>

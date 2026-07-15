@@ -1,22 +1,40 @@
 .section {
-  padding: 120px 40px 128px;
+  position: relative;
+  padding: 180px 40px 160px;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mnemonic {
+  display: inline-block;
+  margin-top: 28px;
 }
 
 .heading {
-  font-size: 74px;
+  font-size: 44px;
 }
 
 .lead {
-  font-size: 20px;
+  font-size: 19px;
 }
 
 @media (max-width: 760px) {
   .section {
-    padding: 72px 20px 80px;
+    padding: 128px 20px 96px;
+    min-height: 82vh;
   }
 
   .heading {
-    font-size: 42px;
+    font-size: 30px;
   }
 
   .lead {
