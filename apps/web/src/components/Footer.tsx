@@ -16,35 +16,31 @@ export function Footer() {
   return (
     <footer
       id="contact"
+      className={styles.footer}
       style={{ background: "var(--plnly-ink-2)", borderTop: "1px solid var(--plnly-border-on-ink)" }}
     >
+      <div className={styles.horizon} aria-hidden="true">
+        <div className={styles.horizonRing} />
+        <div className={styles.horizonRing} />
+        <div className={styles.horizonRing} />
+        <div className={styles.horizonGlow} />
+      </div>
       <div className={styles.section} style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 40 }}>
-          <div style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
-            <div className={styles.stoop}>
-              <Image
-                src="/photos/brownstone-stoop.jpg"
-                alt="A Brooklyn brownstone stoop"
-                fill
-                sizes="64px"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div>
-              <Wordmark size="md" onInk style={{ alignItems: "flex-start" }} />
-              <p
-                style={{
-                  fontFamily: "var(--plnly-font-body)",
-                  fontSize: 15,
-                  lineHeight: 1.5,
-                  color: "var(--plnly-on-ink-dim)",
-                  margin: "34px 0 0",
-                  maxWidth: 300,
-                }}
-              >
-                Personal AI systems for your home and life. Brooklyn, NY — and online.
-              </p>
-            </div>
+          <div>
+            <Wordmark size="md" onInk />
+            <p
+              style={{
+                fontFamily: "var(--plnly-font-body)",
+                fontSize: 15,
+                lineHeight: 1.5,
+                color: "var(--plnly-on-ink-dim)",
+                margin: "34px 0 0",
+                maxWidth: 300,
+              }}
+            >
+              Personal AI systems for your home and life. Brooklyn, NY — and online.
+            </p>
           </div>
           <div style={{ display: "flex", gap: 64, flexWrap: "wrap" }}>
             <div>
@@ -58,6 +54,15 @@ export function Footer() {
             </div>
             <div>
               <Eyebrow onInk>WFWorks family</Eyebrow>
+              <div style={{ marginTop: 14 }}>
+                <Image
+                  src="/brand/wfworks-wordmark-on-ink.svg"
+                  alt="WFWorks"
+                  width={140}
+                  height={19}
+                  style={{ display: "block" }}
+                />
+              </div>
               <div style={footCol}>
                 <span style={footLink}>PLNLY</span>
                 <a

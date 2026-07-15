@@ -1,18 +1,67 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
 .section {
+  position: relative;
+  z-index: 1;
   padding: 80px 40px 56px;
 }
 
-.stoop {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--plnly-radius-card);
-  overflow: hidden;
-  flex: none;
+/* The horizon — a faint quiet-orbit ring system with a coral "sunrise" glow,
+   mostly cropped below the footer so only the topmost curve peeks into view,
+   as if watching the sun just cresting the horizon from orbit. */
+.horizon {
+  position: absolute;
+  right: -12%;
+  bottom: -78%;
+  width: 900px;
+  height: 900px;
+  max-width: 130vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.horizonGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 22%,
+    rgba(255, 61, 0, 0.32) 0%,
+    rgba(255, 61, 0, 0.12) 30%,
+    rgba(255, 61, 0, 0) 62%
+  );
+}
+
+.horizonRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 242, 245, 0.07);
+}
+
+.horizonRing:nth-child(2) {
+  inset: 8%;
+  border-color: rgba(240, 242, 245, 0.055);
+}
+
+.horizonRing:nth-child(3) {
+  inset: 16%;
+  border-color: rgba(240, 242, 245, 0.04);
 }
 
 @media (max-width: 760px) {
   .section {
     padding: 56px 20px 40px;
+  }
+
+  .horizon {
+    width: 560px;
+    height: 560px;
+    bottom: -85%;
   }
 }

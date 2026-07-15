@@ -5,8 +5,8 @@ import { BookButton } from "@/components/BookButton";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "PLNLY Travel",
-  description: "The AI plans the trip. You still make every call — two ways to travel well, from PLNLY and Network Planning.",
+  title: "Travel — PLNLY × Network Planning",
+  description: "The AI plans the trip. You still make every call — two ways to travel well, from PLNLY and our sister brand Network Planning.",
 };
 
 const WAYS = [
@@ -45,7 +45,7 @@ export default function TravelPage() {
     <main>
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <Eyebrow onInk>PLNLY Travel</Eyebrow>
+          <Eyebrow onInk>Trip planning</Eyebrow>
           <h1
             style={{
               fontFamily: "var(--plnly-font-display)",
@@ -72,8 +72,9 @@ export default function TravelPage() {
           >
             Most of what eats a weekend before a trip {"isn't"} the traveling — {"it's"} the forty
             open tabs: routes, stays, the restaurant that books out three weeks ahead, the flight
-            {" that's"} quietly cheaper on a Tuesday. PLNLY Travel is two ways to make that part
-            disappear without handing over control of your own trip.
+            {" that's"} quietly cheaper on a Tuesday. PLNLY offers travel tools and bespoke
+            packages in coordination with Network Planning, a WFWorks company — two ways to make
+            that part disappear without handing over control of your own trip.
           </p>
         </div>
       </section>

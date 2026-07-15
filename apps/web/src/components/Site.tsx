@@ -1,17 +1,22 @@
 import { OrbitCanvas } from "./OrbitCanvas";
 import { Hero } from "./Hero";
-import { ServicesOrbitSection } from "./ServicesOrbitSection";
-import { Packages } from "./Packages";
+import { PackagesOrbit } from "./PackagesOrbit";
 import { TravelTeaser } from "./TravelTeaser";
 import { FoundingOffer } from "./FoundingOffer";
 
 export function Site() {
   return (
-    <div style={{ background: "var(--plnly-ink-2)", overflowX: "hidden" }}>
-      <OrbitCanvas />
-      <Hero />
-      <ServicesOrbitSection />
-      <Packages />
+    <div style={{ overflowX: "hidden" }}>
+      {/* Orbit scope: the canvas is position:sticky (see OrbitCanvas) and pins for
+          exactly the height of Hero + PackagesOrbit below, then scrolls away —
+          it must never bleed into TravelTeaser/FoundingOffer/Footer. */}
+      <div style={{ position: "relative", background: "var(--plnly-ink-2)" }}>
+        <OrbitCanvas />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Hero />
+          <PackagesOrbit />
+        </div>
+      </div>
       <TravelTeaser />
       <FoundingOffer />
     </div>

@@ -4,31 +4,31 @@ import { useEffect, useRef } from "react";
 
 const TILT_ANGLE = Math.PI / 5.5;
 const TARGET_FOCUS_ANGLE = 3.6;
+const NODE_COUNT = 5;
 
 interface OrbitDef {
   rx: number;
   ry: number;
-  baseNodeAngle?: number;
-  hasNode: boolean;
+  baseNodeAngle: number;
 }
 
-// Inner 3 rings carry the service nodes (Setup / Teaching / Ownership); outer
-// rings are architectural depth only. Ported from PLNLY_Services_Orbit_Element.html.
-const ORBITS: OrbitDef[] = [
-  { rx: 550, ry: 240, baseNodeAngle: TARGET_FOCUS_ANGLE + 0.16 * Math.PI * 2, hasNode: true },
-  { rx: 850, ry: 370, baseNodeAngle: TARGET_FOCUS_ANGLE + 0.5 * Math.PI * 2, hasNode: true },
-  { rx: 1150, ry: 500, baseNodeAngle: TARGET_FOCUS_ANGLE + 0.83 * Math.PI * 2, hasNode: true },
-  { rx: 1450, ry: 630, hasNode: false },
-  { rx: 1900, ry: 820, hasNode: false },
-];
+// One ring per package (First Look / The Setup / Scholar Ready / The Household /
+// In Residence) — all five carry a sweeping node now, evenly spaced around the turn.
+const ORBITS: OrbitDef[] = Array.from({ length: NODE_COUNT }, (_, i) => ({
+  rx: 480 + i * 300,
+  ry: 210 + i * 130,
+  baseNodeAngle: TARGET_FOCUS_ANGLE + (i / NODE_COUNT) * Math.PI * 2,
+}));
 
 /**
- * The quiet-orbit backdrop for the hero + services section: faint elliptical
- * rings, mouse parallax, and (once scrolled into #services-orbit) three
- * service nodes that sweep to focus and light up coral in sequence. One
- * continuous fixed canvas behind both sections, decorative (aria-hidden).
+ * The quiet-orbit backdrop for the hero + packages section. `position: sticky`
+ * (not fixed) scoped to whatever wraps it + the packages scroll section, so it
+ * pins for exactly that span and then scrolls away — it must never bleed into
+ * the sections below. Faint elliptical rings, mouse parallax, and (once
+ * scrolled into #packages-orbit) five package nodes that sweep to focus and
+ * light up coral in sequence, one per package.
  */
-export function OrbitCanvas({ scrollSectionId = "services-orbit" }: { scrollSectionId?: string }) {
+export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSectionId?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export function OrbitCanvas({ scrollSectionId = "services-orbit" }: { scrollSect
         if (rect.top > 0) raw = 0;
         scrollProgress = raw;
       }
-      activeIndex = scrollProgress > 0.66 ? 2 : scrollProgress > 0.33 ? 1 : 0;
+      activeIndex = Math.min(NODE_COUNT - 1, Math.floor(scrollProgress * NODE_COUNT));
       targetScrollAngle = scrollProgress * Math.PI * 2;
     }
 
@@ -100,18 +100,16 @@ export function OrbitCanvas({ scrollSectionId = "services-orbit" }: { scrollSect
         ctx!.beginPath();
         ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, 0, Math.PI * 2);
         ctx!.strokeStyle = "rgba(240, 242, 245, 0.05)";
-        ctx!.lineWidth = orbit.hasNode ? 1.5 : 0.5;
+        ctx!.lineWidth = 1.5;
         ctx!.stroke();
-        if (orbit.hasNode && orbit.baseNodeAngle !== undefined) {
-          const dx = orbit.rx * Math.cos(orbit.baseNodeAngle);
-          const dy = orbit.ry * Math.sin(orbit.baseNodeAngle);
-          const nx = cx + dx * Math.cos(TILT_ANGLE) - dy * Math.sin(TILT_ANGLE);
-          const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
-          ctx!.beginPath();
-          ctx!.arc(nx, ny, 4, 0, Math.PI * 2);
-          ctx!.fillStyle = "rgba(240, 242, 245, 0.5)";
-          ctx!.fill();
-        }
+        const dx = orbit.rx * Math.cos(orbit.baseNodeAngle);
+        const dy = orbit.ry * Math.sin(orbit.baseNodeAngle);
+        const nx = cx + dx * Math.cos(TILT_ANGLE) - dy * Math.sin(TILT_ANGLE);
+        const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
+        ctx!.beginPath();
+        ctx!.arc(nx, ny, 4, 0, Math.PI * 2);
+        ctx!.fillStyle = "rgba(240, 242, 245, 0.5)";
+        ctx!.fill();
       });
     }
 
@@ -128,53 +126,51 @@ export function OrbitCanvas({ scrollSectionId = "services-orbit" }: { scrollSect
         ctx!.beginPath();
         ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, 0, Math.PI * 2);
         ctx!.strokeStyle = "rgba(240, 242, 245, 0.035)";
-        ctx!.lineWidth = orbit.hasNode ? 1.5 : 0.5;
+        ctx!.lineWidth = 1.5;
         ctx!.stroke();
 
-        if (orbit.hasNode && orbit.baseNodeAngle !== undefined) {
-          const isTarget = i === activeIndex && scrollProgress > 0.01;
-          activeWeights[i] += ((isTarget ? 1 : 0) - activeWeights[i]) * 0.1;
-          const w = activeWeights[i];
-          const currentAngle = orbit.baseNodeAngle - currentScrollAngle + time * 0.0002;
+        const isTarget = i === activeIndex && scrollProgress > 0.01;
+        activeWeights[i] += ((isTarget ? 1 : 0) - activeWeights[i]) * 0.1;
+        const w = activeWeights[i];
+        const currentAngle = orbit.baseNodeAngle - currentScrollAngle + time * 0.0002;
 
-          if (w > 0.01) {
-            ctx!.beginPath();
-            const spread = 0.5 + w * 0.3;
-            ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, currentAngle - spread, currentAngle + spread);
-            ctx!.strokeStyle = `rgba(255, 61, 0, ${w * 0.5})`;
-            ctx!.lineWidth = 1 + w * 2;
-            ctx!.shadowColor = "#FF3D00";
-            ctx!.shadowBlur = w * 15;
-            ctx!.stroke();
-            ctx!.shadowBlur = 0;
-          }
-
-          const dx = orbit.rx * Math.cos(currentAngle);
-          const dy = orbit.ry * Math.sin(currentAngle);
-          const nx = cx + dx * Math.cos(TILT_ANGLE) - dy * Math.sin(TILT_ANGLE);
-          const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
-
+        if (w > 0.01) {
           ctx!.beginPath();
-          const radius = 3 + w * 5;
-          ctx!.arc(nx, ny, radius, 0, Math.PI * 2);
-          const r = 100 + w * 155;
-          const g = 110 - w * 49;
-          const b = 120 - w * 120;
-          const a = 0.4 + w * 0.6;
-          ctx!.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
-          if (w > 0.1) {
-            ctx!.shadowColor = "#FF3D00";
-            ctx!.shadowBlur = w * 25;
-          }
-          ctx!.fill();
+          const spread = 0.5 + w * 0.3;
+          ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, currentAngle - spread, currentAngle + spread);
+          ctx!.strokeStyle = `rgba(255, 61, 0, ${w * 0.5})`;
+          ctx!.lineWidth = 1 + w * 2;
+          ctx!.shadowColor = "#FF3D00";
+          ctx!.shadowBlur = w * 15;
+          ctx!.stroke();
           ctx!.shadowBlur = 0;
+        }
 
-          if (w > 0.5) {
-            ctx!.beginPath();
-            ctx!.arc(nx, ny, radius * 0.3, 0, Math.PI * 2);
-            ctx!.fillStyle = "#FFFFFF";
-            ctx!.fill();
-          }
+        const dx = orbit.rx * Math.cos(currentAngle);
+        const dy = orbit.ry * Math.sin(currentAngle);
+        const nx = cx + dx * Math.cos(TILT_ANGLE) - dy * Math.sin(TILT_ANGLE);
+        const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
+
+        ctx!.beginPath();
+        const radius = 3 + w * 5;
+        ctx!.arc(nx, ny, radius, 0, Math.PI * 2);
+        const r = 100 + w * 155;
+        const g = 110 - w * 49;
+        const b = 120 - w * 120;
+        const a = 0.4 + w * 0.6;
+        ctx!.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
+        if (w > 0.1) {
+          ctx!.shadowColor = "#FF3D00";
+          ctx!.shadowBlur = w * 25;
+        }
+        ctx!.fill();
+        ctx!.shadowBlur = 0;
+
+        if (w > 0.5) {
+          ctx!.beginPath();
+          ctx!.arc(nx, ny, radius * 0.3, 0, Math.PI * 2);
+          ctx!.fillStyle = "#FFFFFF";
+          ctx!.fill();
         }
       });
 
@@ -221,10 +217,12 @@ export function OrbitCanvas({ scrollSectionId = "services-orbit" }: { scrollSect
       ref={canvasRef}
       aria-hidden="true"
       style={{
-        position: "fixed",
-        inset: 0,
+        position: "sticky",
+        top: 0,
+        display: "block",
         width: "100vw",
         height: "100vh",
+        marginBottom: "-100vh",
         zIndex: 0,
         pointerEvents: "none",
       }}

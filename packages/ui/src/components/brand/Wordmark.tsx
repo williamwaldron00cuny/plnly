@@ -20,12 +20,10 @@ export interface WordmarkProps extends React.HTMLAttributes<HTMLSpanElement> {
 const FIXED_PX: Record<'sm' | 'md' | 'lg', number> = { sm: 24, md: 38, lg: 57 };
 
 /**
- * The PLNLY / plainly lockup — current mark (Logos_71326, July 2026): a coral
- * bar floating above-left of the wordmark, PLNLY in Outfit Light tracked
- * uppercase, a coral dot as the period, and "plainly" in Newsreader italic
- * tucked into the negative space above-right — grey, never coral. Matches
- * PLNLY_Hero_Element.html's lockup exactly (the currently-authorized site
- * geometry); do not reintroduce the earlier inline-row v1.0 layout.
+ * The PLNLY / plainly lockup: PLNLY in Outfit Light tracked uppercase with a
+ * coral dash above-left and a coral dot as the period, "plainly" set as its
+ * own line above (right-aligned) so it can never collide with the dot — the
+ * "ai" hidden inside "pl-ai-nly" is set in coral as the brand's own reveal.
  */
 export function Wordmark({
   variant = 'stacked',
@@ -114,8 +112,9 @@ export function Wordmark({
   return (
     <span
       style={{
-        position: 'relative',
-        display: 'inline-block',
+        display: 'inline-flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         fontSize: wmFontSize,
         lineHeight: 1,
         ...style,
@@ -123,26 +122,44 @@ export function Wordmark({
       className={[isHero ? styles.hero : '', className].filter(Boolean).join(' ') || undefined}
       {...rest}
     >
-      {/* The floating dash — tucked just outside the wordmark's top-left corner */}
-      <span
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: '-0.14em',
-          left: '-0.14em',
-          width: '0.43em',
-          height: '0.057em',
-          background: 'var(--plnly-coral-2)',
-        }}
-      />
-      <span style={{ display: 'inline-flex', alignItems: 'baseline' }}>
+      {/* "plainly" — its own line, right-aligned, so it can never collide with the dot below. */}
+      {reveal && (
+        <span
+          style={{
+            alignSelf: 'flex-end',
+            fontFamily: 'var(--plnly-font-serif)',
+            fontStyle: 'italic',
+            fontWeight: 'var(--plnly-weight-regular)',
+            fontSize: '0.33em',
+            color: revealColor,
+            whiteSpace: 'nowrap',
+            marginBottom: '0.08em',
+            paddingRight: '0.05em',
+          }}
+        >
+          pl<span style={{ color: 'var(--plnly-coral)' }}>ai</span>nly
+        </span>
+      )}
+      <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'baseline' }}>
+        {/* The floating dash — tucked just outside the wordmark's top-left corner */}
+        <span
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '-0.14em',
+            left: '-0.14em',
+            width: '0.43em',
+            height: '0.057em',
+            background: 'var(--plnly-coral-2)',
+          }}
+        />
         <span
           style={{
             fontFamily: 'var(--plnly-font-display)',
             fontWeight: 'var(--plnly-weight-light)',
             fontSize: '1em',
             letterSpacing: 'var(--plnly-wordmark-ls)',
-            paddingLeft: '0.1em',
+            paddingLeft: '0.15em',
             color: inkColor,
           }}
         >
@@ -161,24 +178,6 @@ export function Wordmark({
           }}
         />
       </span>
-      {/* "plainly" — the reveal, tucked into the negative space above-right. Never coral. */}
-      {reveal && (
-        <span
-          style={{
-            position: 'absolute',
-            top: '-0.32em',
-            left: '2.2em',
-            fontFamily: 'var(--plnly-font-serif)',
-            fontStyle: 'italic',
-            fontWeight: 'var(--plnly-weight-regular)',
-            fontSize: '0.33em',
-            color: revealColor,
-            whiteSpace: 'nowrap',
-          }}
-        >
-          plainly
-        </span>
-      )}
     </span>
   );
 }

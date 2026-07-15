@@ -1,6 +1,6 @@
 .section {
   background: var(--plnly-bg-raised);
-  padding: 96px 40px;
+  padding: 144px 40px;
 }
 
 .inner {
@@ -13,12 +13,12 @@
 }
 
 .heading {
-  font-size: 34px;
+  font-size: 42px;
 }
 
 @media (max-width: 760px) {
   .section {
-    padding: 64px 20px;
+    padding: 80px 20px;
   }
 
   .inner {
@@ -26,6 +26,6 @@
   }
 
   .heading {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
