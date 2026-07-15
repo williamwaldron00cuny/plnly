@@ -14,7 +14,7 @@ export function Hero() {
           className={styles.heading}
           style={{
             fontFamily: "var(--plnly-font-display)",
-            fontWeight: 500,
+            fontWeight: 400,
             lineHeight: 1.15,
             letterSpacing: "-0.015em",
             color: "var(--plnly-on-ink-dim)",

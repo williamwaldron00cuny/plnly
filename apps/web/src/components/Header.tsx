@@ -4,8 +4,7 @@ import { BookButton } from "./BookButton";
 import styles from "./Header.module.css";
 
 const NAV = [
-  { label: "Services", href: "/#services-orbit" },
-  { label: "Packages", href: "/#packages" },
+  { label: "Packages", href: "/#packages-orbit" },
   { label: "Travel", href: "/travel" },
   { label: "About", href: "/about" },
 ];
