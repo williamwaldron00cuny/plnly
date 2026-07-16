@@ -14,6 +14,18 @@ export default function AboutPage() {
   return (
     <main>
       <section className={styles.hero}>
+        <video
+          className={styles.heroVideo}
+          src="/video/brooklyn-bridge.mp4"
+          poster="/photos/brooklyn-bridge-poster.jpg"
+          aria-label="The Brooklyn Bridge and Manhattan skyline at golden hour"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+        />
+        <div className={styles.heroScrim} />
         <div className={styles.heroInner}>
           <Eyebrow onInk>About</Eyebrow>
           <h1

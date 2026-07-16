@@ -44,38 +44,49 @@ export default function TravelPage() {
   return (
     <main>
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <Eyebrow onInk>Trip planning</Eyebrow>
-          <h1
-            style={{
-              fontFamily: "var(--plnly-font-display)",
-              fontWeight: 500,
-              fontSize: 40,
-              lineHeight: 1.15,
-              letterSpacing: "-0.015em",
-              color: "var(--plnly-cloud)",
-              margin: "16px 0 0",
-              maxWidth: "18ch",
-            }}
-          >
-            The AI plans the trip. You still make every call.
-          </h1>
-          <p
-            style={{
-              fontFamily: "var(--plnly-font-body)",
-              fontSize: 17,
-              lineHeight: 1.65,
-              color: "var(--plnly-on-ink-dim)",
-              margin: "20px 0 0",
-              maxWidth: 640,
-            }}
-          >
-            Most of what eats a weekend before a trip {"isn't"} the traveling — {"it's"} the forty
-            open tabs: routes, stays, the restaurant that books out three weeks ahead, the flight
-            {" that's"} quietly cheaper on a Tuesday. PLNLY offers travel tools and bespoke
-            packages in coordination with Network Planning, a WFWorks company — two ways to make
-            that part disappear without handing over control of your own trip.
-          </p>
+        <div className={styles.heroGrid}>
+          <div>
+            <Eyebrow onInk>Trip planning</Eyebrow>
+            <h1
+              style={{
+                fontFamily: "var(--plnly-font-display)",
+                fontWeight: 500,
+                fontSize: 40,
+                lineHeight: 1.15,
+                letterSpacing: "-0.015em",
+                color: "var(--plnly-cloud)",
+                margin: "16px 0 0",
+                maxWidth: "18ch",
+              }}
+            >
+              The AI plans the trip. You still make every call.
+            </h1>
+            <p
+              style={{
+                fontFamily: "var(--plnly-font-body)",
+                fontSize: 17,
+                lineHeight: 1.65,
+                color: "var(--plnly-on-ink-dim)",
+                margin: "20px 0 0",
+                maxWidth: 640,
+              }}
+            >
+              Most of what eats a weekend before a trip {"isn't"} the traveling — {"it's"} the forty
+              open tabs: routes, stays, the restaurant that books out three weeks ahead, the flight
+              {" that's"} quietly cheaper on a Tuesday. PLNLY offers travel tools and bespoke
+              packages in coordination with Network Planning, a WFWorks company — two ways to make
+              that part disappear without handing over control of your own trip.
+            </p>
+          </div>
+          <div className={styles.heroPhoto}>
+            <Image
+              src="/photos/travel-packing.jpg"
+              alt="A suitcase, hat, and clothes laid out on a bed while packing for a trip"
+              fill
+              sizes="(max-width: 800px) 100vw, 420px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         </div>
       </section>
 
@@ -110,7 +121,24 @@ export default function TravelPage() {
               </Card>
             ))}
           </div>
+        </div>
 
+        <div className={styles.cloudBreak}>
+          <video
+            className={styles.cloudVideo}
+            src="/video/clouds-aloft.mp4"
+            poster="/photos/clouds-aloft-poster.jpg"
+            aria-label="Clouds seen from above an airplane at sunset"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+          />
+          <p className={styles.cloudLine}>Somewhere over it, the itinerary is already adjusting itself.</p>
+        </div>
+
+        <div className={styles.inner}>
           <div className={styles.cardsHeading}>
             <Eyebrow>Three ways in</Eyebrow>
           </div>
