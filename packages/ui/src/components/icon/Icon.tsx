@@ -14,7 +14,7 @@ export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
 export const ICON_NAMES: IconName[] = ['ring', 'focus', 'time', 'plan', 'handover', 'add', 'place', 'orbit'];
 
 const STROKE = '#20242B';
-const CORAL = '#E25E3A';
+const CORAL = '#FF3D00'; // Coral 2.0 — locked July 15, 2026
 
 function paths(name: IconName, coral: boolean) {
   const accent = coral ? CORAL : STROKE;

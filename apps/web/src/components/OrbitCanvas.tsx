@@ -91,16 +91,30 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
       targetScrollAngle = scrollProgress * Math.PI * 2;
     }
 
+    // The horizon glow — a soft coral "sunrise" wash centered on the same focal
+    // point the rings orbit, echoing the footer's horizon motif. Drawn first so
+    // the rings/nodes layer on top of it.
+    function drawHorizon(cx: number, cy: number) {
+      const glowRadius = Math.max(width, height) * 0.75;
+      const gradient = ctx!.createRadialGradient(cx, cy, 0, cx, cy, glowRadius);
+      gradient.addColorStop(0, "rgba(255, 61, 0, 0.30)");
+      gradient.addColorStop(0.32, "rgba(255, 61, 0, 0.13)");
+      gradient.addColorStop(0.65, "rgba(255, 61, 0, 0)");
+      ctx!.fillStyle = gradient;
+      ctx!.fillRect(0, 0, width, height);
+    }
+
     function drawStatic() {
-      // Reduced motion: static blueprint — rings + placed nodes, no rotation/parallax/glow.
+      // Reduced motion: static blueprint — rings + placed nodes, no rotation/parallax.
       ctx!.clearRect(0, 0, width, height);
       const cx = width > 768 ? width * 0.85 : width * 0.7;
       const cy = height > 768 ? height * 0.85 : height * 0.8;
+      drawHorizon(cx, cy);
       ORBITS.forEach((orbit) => {
         ctx!.beginPath();
         ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, 0, Math.PI * 2);
-        ctx!.strokeStyle = "rgba(240, 242, 245, 0.05)";
-        ctx!.lineWidth = 1.5;
+        ctx!.strokeStyle = "rgba(240, 242, 245, 0.16)";
+        ctx!.lineWidth = 2.5;
         ctx!.stroke();
         const dx = orbit.rx * Math.cos(orbit.baseNodeAngle);
         const dy = orbit.ry * Math.sin(orbit.baseNodeAngle);
@@ -108,7 +122,7 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
         const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
         ctx!.beginPath();
         ctx!.arc(nx, ny, 4, 0, Math.PI * 2);
-        ctx!.fillStyle = "rgba(240, 242, 245, 0.5)";
+        ctx!.fillStyle = "rgba(240, 242, 245, 0.75)";
         ctx!.fill();
       });
     }
@@ -121,12 +135,13 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
       currentScrollAngle += (targetScrollAngle - currentScrollAngle) * 0.06;
 
       const { cx, cy } = focalPoint();
+      drawHorizon(cx, cy);
 
       ORBITS.forEach((orbit, i) => {
         ctx!.beginPath();
         ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, 0, Math.PI * 2);
-        ctx!.strokeStyle = "rgba(240, 242, 245, 0.035)";
-        ctx!.lineWidth = 1.5;
+        ctx!.strokeStyle = "rgba(240, 242, 245, 0.15)";
+        ctx!.lineWidth = 2.5;
         ctx!.stroke();
 
         const isTarget = i === activeIndex && scrollProgress > 0.01;
@@ -138,10 +153,10 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
           ctx!.beginPath();
           const spread = 0.5 + w * 0.3;
           ctx!.ellipse(cx, cy, orbit.rx, orbit.ry, TILT_ANGLE, currentAngle - spread, currentAngle + spread);
-          ctx!.strokeStyle = `rgba(255, 61, 0, ${w * 0.5})`;
-          ctx!.lineWidth = 1 + w * 2;
+          ctx!.strokeStyle = `rgba(255, 61, 0, ${w * 0.85})`;
+          ctx!.lineWidth = 1.5 + w * 3;
           ctx!.shadowColor = "#FF3D00";
-          ctx!.shadowBlur = w * 15;
+          ctx!.shadowBlur = w * 22;
           ctx!.stroke();
           ctx!.shadowBlur = 0;
         }
@@ -152,12 +167,12 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
         const ny = cy + dx * Math.sin(TILT_ANGLE) + dy * Math.cos(TILT_ANGLE);
 
         ctx!.beginPath();
-        const radius = 3 + w * 5;
+        const radius = 4 + w * 5;
         ctx!.arc(nx, ny, radius, 0, Math.PI * 2);
-        const r = 100 + w * 155;
-        const g = 110 - w * 49;
-        const b = 120 - w * 120;
-        const a = 0.4 + w * 0.6;
+        const r = 170 + w * 85;
+        const g = 175 - w * 114;
+        const b = 185 - w * 185;
+        const a = 0.65 + w * 0.35;
         ctx!.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
         if (w > 0.1) {
           ctx!.shadowColor = "#FF3D00";
@@ -221,8 +236,8 @@ export function OrbitCanvas({ scrollSectionId = "packages-orbit" }: { scrollSect
         top: 0,
         display: "block",
         width: "100vw",
-        height: "100vh",
-        marginBottom: "-100vh",
+        height: "100dvh",
+        marginBottom: "-100dvh",
         zIndex: 0,
         pointerEvents: "none",
       }}
