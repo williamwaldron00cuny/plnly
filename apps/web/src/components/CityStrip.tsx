@@ -66,11 +66,10 @@ export function CityStrip() {
     <section className={styles.section}>
       <div className={styles.kicker}>
         <Eyebrow onInk dot>
-          Same neighborhood
+          Around here
         </Eyebrow>
         <p className={styles.line}>
-          Graffiti on the train two stops away. A puzzle on the table two rooms over. PLNLY runs
-          in both houses.
+          Same neighborhood, same block, a dozen different homes. PLNLY works in all of them.
         </p>
       </div>
       <div className={styles.strip}>
