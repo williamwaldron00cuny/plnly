@@ -15,10 +15,18 @@ interface Tile {
 // household runs across both the quiet nights and the loud ones.
 const TILES: Tile[] = [
   {
+    kind: "video",
+    src: "/video/loft-popart.mp4",
+    poster: "/photos/loft-popart-poster.jpg",
+    alt: "A Brooklyn loft with leather chairs and pop-art paintings on a brick wall",
+    width: 560,
+    aspect: "16 / 10",
+  },
+  {
     kind: "photo",
-    src: "/photos/family-breakfast-laptop.jpg",
-    alt: "A family of four at breakfast, one parent on a laptop",
-    width: 340,
+    src: "/photos/family-busy-kitchen.jpg",
+    alt: "A father on the phone with a child on his shoulders, another child and mother in the kitchen behind him",
+    width: 260,
     aspect: "4 / 5",
   },
   {
@@ -26,7 +34,7 @@ const TILES: Tile[] = [
     src: "/video/subway-graffiti.mp4",
     poster: "/photos/subway-graffiti-poster.jpg",
     alt: "An elevated subway train covered in graffiti passing over a Brooklyn street",
-    width: 480,
+    width: 440,
     aspect: "16 / 10",
   },
   {
@@ -35,14 +43,6 @@ const TILES: Tile[] = [
     alt: "Hands mid-move over a board game at a kitchen table",
     width: 300,
     aspect: "1 / 1",
-  },
-  {
-    kind: "video",
-    src: "/video/loft-popart.mp4",
-    poster: "/photos/loft-popart-poster.jpg",
-    alt: "A Brooklyn loft with leather chairs and pop-art paintings on a brick wall",
-    width: 460,
-    aspect: "16 / 10",
   },
   {
     kind: "video",
@@ -56,7 +56,7 @@ const TILES: Tile[] = [
     kind: "photo",
     src: "/photos/calendar-hand.jpg",
     alt: "A hand marking a date on a wall calendar covered in sticky notes",
-    width: 300,
+    width: 280,
     aspect: "3 / 4",
   },
 ];
@@ -69,8 +69,8 @@ export function CityStrip() {
           Same neighborhood
         </Eyebrow>
         <p className={styles.line}>
-          The G train got tagged again this week. Two stops later, someone&rsquo;s finishing a
-          puzzle with their kid. PLNLY runs in both houses.
+          Graffiti on the train two stops away. A puzzle on the table two rooms over. PLNLY runs
+          in both houses.
         </p>
       </div>
       <div className={styles.strip}>
