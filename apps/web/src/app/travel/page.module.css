@@ -3,9 +3,55 @@
   padding: 72px 40px 56px;
 }
 
-.heroInner {
+.heroGrid {
   max-width: 1120px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.heroPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--plnly-radius-card-lg);
+  overflow: hidden;
+}
+
+.cloudBreak {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  margin: 96px 0;
+}
+
+.cloudVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloudVideo {
+    display: none;
+  }
+}
+
+.cloudLine {
+  position: absolute;
+  left: 40px;
+  bottom: 28px;
+  max-width: 46ch;
+  font-family: var(--plnly-font-serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--plnly-cloud);
+  text-shadow: 0 2px 16px rgba(6, 8, 10, 0.6);
+  margin: 0;
 }
 
 .body {
@@ -47,8 +93,29 @@
     padding: 56px 20px 40px;
   }
 
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .heroPhoto {
+    aspect-ratio: 16 / 10;
+  }
+
   .body {
     padding: 64px 20px;
+  }
+
+  .cloudBreak {
+    aspect-ratio: 4 / 3;
+    margin: 64px 0;
+  }
+
+  .cloudLine {
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+    font-size: 16px;
   }
 
   .ways {
