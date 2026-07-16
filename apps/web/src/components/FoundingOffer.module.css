@@ -1,6 +1,33 @@
 .section {
+  position: relative;
   background: var(--plnly-ink-2);
   padding: 128px 40px;
+  overflow: hidden;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgVideo {
+    display: none;
+  }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(6, 8, 10, 0.35) 0%,
+    var(--plnly-ink-2) 78%
+  );
 }
 
 .inner {
