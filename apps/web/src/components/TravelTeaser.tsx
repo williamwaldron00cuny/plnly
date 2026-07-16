@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Eyebrow, Button } from "@plnly/ui";
 import styles from "./TravelTeaser.module.css";
 
@@ -52,7 +53,16 @@ export function TravelTeaser() {
           </p>
         </div>
         <div>
-          <Link href="/travel" style={{ display: "inline-block" }}>
+          <div className={styles.photo}>
+            <Image
+              src="/photos/brooklyn-promenade.jpg"
+              alt="A woman walking along the Brooklyn Heights Promenade at sunset, Manhattan skyline behind her"
+              fill
+              sizes="(max-width: 760px) 100vw, 440px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <Link href="/travel" style={{ display: "inline-block", marginTop: 24 }}>
             <Button variant="secondary" size="lg">
               Explore Network Planning
             </Button>
