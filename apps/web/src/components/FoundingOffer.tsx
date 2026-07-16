@@ -6,7 +6,19 @@ import styles from "./FoundingOffer.module.css";
 export function FoundingOffer() {
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <video
+        className={styles.bgVideo}
+        src="/video/brooklyn-bridge.mp4"
+        poster="/photos/brooklyn-bridge-poster.jpg"
+        aria-label="The Brooklyn Bridge and Manhattan skyline at golden hour"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+      />
+      <div className={styles.scrim} />
+      <div className={styles.inner} style={{ position: "relative", zIndex: 1 }}>
         <Eyebrow onInk dot>
           Early days, on purpose
         </Eyebrow>
@@ -43,7 +55,7 @@ export function FoundingOffer() {
           <BookButton size="lg" />
         </div>
       </div>
-      <div style={{ marginTop: 80 }}>
+      <div style={{ marginTop: 80, position: "relative", zIndex: 1 }}>
         <Booking />
       </div>
     </section>
