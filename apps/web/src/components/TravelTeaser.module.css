@@ -16,6 +16,13 @@
   font-size: 42px;
 }
 
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--plnly-radius-card-lg);
+  overflow: hidden;
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 80px 20px;
