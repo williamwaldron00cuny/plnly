@@ -62,7 +62,7 @@ export function Orbit({
         <circle cx="120" cy="120" r="72" stroke={ring[1]} strokeWidth="1" />
         <circle cx="120" cy="120" r="104" stroke={ring[2]} strokeWidth="1" />
       </g>
-      <circle cx="120" cy="120" r="6" fill="#E25E3A" fillOpacity={centerOpacity} />
+      <circle cx="120" cy="120" r="6" fill="#FF3D00" fillOpacity={centerOpacity} />
       {satellites && (
         <>
           <circle cx="192" cy="120" r="4" fill="#9FB1BB" fillOpacity={onInk ? 1 : 0.7}>
