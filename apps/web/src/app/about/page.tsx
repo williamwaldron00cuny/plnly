@@ -16,9 +16,9 @@ export default function AboutPage() {
       <section className={styles.hero}>
         <video
           className={styles.heroVideo}
-          src="/video/brooklyn-bridge.mp4"
-          poster="/photos/brooklyn-bridge-poster.jpg"
-          aria-label="The Brooklyn Bridge and Manhattan skyline at golden hour"
+          src="/video/billy-home.mp4"
+          poster="/photos/billy-home-poster.jpg"
+          aria-label="Billy arriving home to Williamsburg, Brooklyn"
           autoPlay
           muted
           loop
